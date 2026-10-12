@@ -8,6 +8,11 @@ public class GoldManager : MonoBehaviour
 {
     [SerializeField] public TMP_Text goldText;
     public float goldAmount = 0;
+    
+    void Start()
+    {
+        UpdateGoldText();
+    }
 
     public void SetGoldAmount(float amount)
     {
