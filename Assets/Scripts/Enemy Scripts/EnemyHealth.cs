@@ -14,7 +14,7 @@ public class EnemyHealth : MonoBehaviour
     [SerializeField] public Slider healthBar;
     [SerializeField] public GameObject goldPrefab;
 
-    [SerializeField] public PlayerHealth playerHealthGold;
+    [SerializeField] public PlayerHealthAndGold playerHealthGold;
 
     void Awake()
     {

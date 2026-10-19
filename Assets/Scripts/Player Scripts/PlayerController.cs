@@ -6,12 +6,13 @@ using UnityEngine.SceneManagement;
 public class PlayerController : MonoBehaviour
 {
     [Header("Movement Speeds")]
-    [SerializeField] private float speed = 3.0f;
+    [SerializeField] public float speed = 3.0f;
 
     [Header ("References")]
     [SerializeField] private Rigidbody2D characterController;
     [SerializeField] private PlayerInputHandler playerInputHandler;
     [SerializeField] public string shopSceneName = "";
+    [SerializeField] public SpriteRenderer playerRender;
 
     private Vector2 currentMovement;
 
@@ -32,12 +33,28 @@ public class PlayerController : MonoBehaviour
     {
         if (gameObject.scene.name != shopSceneName)
         {
+            if (playerInputHandler.MovementInput.x < 0)
+            {
+                playerRender.flipX = true;
+            }
+            else if (playerInputHandler.MovementInput.x > 0)
+            {
+                playerRender.flipX = false;
+            }
             Vector2 inputDirection = new Vector2(playerInputHandler.MovementInput.x, playerInputHandler.MovementInput.y);
             Vector2 worldDirection = transform.TransformDirection(inputDirection);
             return worldDirection.normalized;
         }
         else
         {
+            if (playerInputHandler.MovementInput.x < 0)
+            {
+                playerRender.flipX = true;
+            }
+            else if (playerInputHandler.MovementInput.x > 0)
+            {
+                playerRender.flipX = false;
+            }
             Vector2 inputDirection = new Vector2(playerInputHandler.MovementInput.x, 0);
             Vector2 worldDirection = transform.TransformDirection(inputDirection);
             return worldDirection.normalized;
