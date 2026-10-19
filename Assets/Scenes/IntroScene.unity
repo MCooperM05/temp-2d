@@ -175,7 +175,7 @@ MonoBehaviour:
     gold was never seen again... UNTIL! A single treasure chest washed ashore, and
     now The Great Diving Era has begun...
   typeSpeed: 0.05
-  nextScene: prototype-boss-fight
+  nextScene: WorldHub
 --- !u!114 &746679367
 MonoBehaviour:
   m_ObjectHideFlags: 0

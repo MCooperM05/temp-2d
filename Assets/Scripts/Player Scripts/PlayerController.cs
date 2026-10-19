@@ -19,6 +19,9 @@ public class PlayerController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        if (playerRender == null) playerRender = GetComponent<SpriteRenderer>();
+        if (characterController == null) characterController = GetComponent<Rigidbody2D>();
+        if (playerInputHandler == null) playerInputHandler = FindFirstObjectByType<PlayerInputHandler>();
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
     }

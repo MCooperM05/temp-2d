@@ -8,7 +8,7 @@ public class IntroScript : MonoBehaviour
 {
     public string message = "Upon the seven seas, Davy Jones discovered an island of gold. He pillaged it all and loaded it upon his ship in hopes of infinite riches. However, fate had other plans. As his ship sunk beneath the waves in a monsterous storm, his gold was never seen again... UNTIL! A single treasure chest washed ashore, and now The Great Diving Era has begun...";
     public float typeSpeed = 0.05f; // seconds between each letter
-    public string nextScene = "prototype-boss-fight"; // name of scene to load
+    public string nextScene = "WorldHub"; // name of scene to load
 
     TMP_Text textBox;
     bool doneTyping = false;

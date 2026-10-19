@@ -16,6 +16,7 @@ public class PlayerHealthAndGold : MonoBehaviour
     [SerializeField] public Material defaultMaterial;
 
     [SerializeField] public float totalGold = 10f;
+    public static float savedHealth = 3f;
 
     [SerializeField] public TMP_Text playerGoldAmount;
 
@@ -24,7 +25,14 @@ public class PlayerHealthAndGold : MonoBehaviour
     void Start()
     {
         UpdateTotalGold(0f);
-        health = 3f;
+        health = savedHealth;
+
+        for (int i = 0; i < haveLife.Length; i++)
+        {
+            haveLife[i].SetActive(i < health);
+            noLife[i].SetActive(i >= health);
+        }
+
         deathScreen.SetActive(false);
         Debug.Log("Player Health: " + health);
     }
@@ -36,6 +44,7 @@ public class PlayerHealthAndGold : MonoBehaviour
         health -= damage;
 
         if (health < 0f) health = 0f;
+        savedHealth = health;
 
         haveLife[(int)health].SetActive(false);
         noLife[(int)health].SetActive(true);
