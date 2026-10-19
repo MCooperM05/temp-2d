@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 public class PlayerController : MonoBehaviour
 {
     [Header("Movement Speeds")]
-    [SerializeField] private float speed = 3.0f;
+    [SerializeField] public float speed = 3.0f;
 
     [Header ("References")]
     [SerializeField] private Rigidbody2D characterController;
