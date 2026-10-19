@@ -19,25 +19,41 @@ public class PlayerHealth : MonoBehaviour
 
     [SerializeField] public TMP_Text playerGoldAmount;
 
+    [SerializeField] public GameObject deathScreen;
+
     void Start()
     {
-        UpdateTotalGold(totalGold);
+        UpdateTotalGold(0f);
         health = 3f;
+        deathScreen.SetActive(false);
         Debug.Log("Player Health: " + health);
     }
 
     public void TakeDamage(float damage)
     {
+        if (health <= 0f) return;
+
         health -= damage;
+
+        if (health < 0f) health = 0f;
+
         haveLife[(int)health].SetActive(false);
         noLife[(int)health].SetActive(true);
 
-        if (health <= 0f)
-        {
-            gameObject.SetActive(false);
+        if (health <= 0f) {
+            Die();
+            return;
         }
 
         StartCoroutine(FlashDamageMaterial());
+    }
+
+    void Die() {
+        gameObject.SetActive(false);
+        deathScreen.SetActive(true);
+        Time.timeScale = 0f;
+        Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.None;
     }
 
     IEnumerator FlashDamageMaterial()
