@@ -60,6 +60,7 @@ public class EnemyHealth : MonoBehaviour
     void DisableEnemy()
     {
         GetComponent<EnemyAI>().enabled = false;
+        GetComponent<BossAI>().enabled = false;
         GetComponent<Collider2D>().enabled = false;
         GetComponent<SpriteRenderer>().enabled = false;
     }

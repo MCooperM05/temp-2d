@@ -10,9 +10,9 @@ public class BossManager : MonoBehaviour
 
     void Update()
     {
-        GameObject Enemy = GameObject.FindGameObjectWithTag("Enemy");
+        GameObject Boss = GameObject.FindGameObjectWithTag("Boss");
 
-        if (Enemy == null)
+        if (Boss == null)
         {
             StartCoroutine(BackToScene());
         }
@@ -20,7 +20,7 @@ public class BossManager : MonoBehaviour
 
     IEnumerator BackToScene()
     {
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(3f);
         SceneManager.LoadScene(sceneName);
     }
 }
