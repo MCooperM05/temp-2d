@@ -1029,6 +1029,7 @@ MonoBehaviour:
   damage: 5
   speed: 20
   cooldown: 0.5
+  tridentSprite: {fileID: 7483628475688220127, guid: dbd7f2b101a0ca549a698563ddbeca1a, type: 3}
 --- !u!114 &8037381083215607229
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1052,7 +1053,6 @@ MonoBehaviour:
   - {fileID: 559973901017429775}
   damageMaterial: {fileID: 2100000, guid: bf42df48a74d353478aa08b5378989cf, type: 2}
   defaultMaterial: {fileID: 2100000, guid: 1163abb039f239548825f002988962d2, type: 2}
-  totalGold: 10
   playerGoldAmount: {fileID: 1381813597451568546}
   deathScreen: {fileID: 235638100665925299}
 --- !u!114 &8811610852541011428

@@ -116,6 +116,7 @@ public class UseShopUI : MonoBehaviour
 
     void GiveBullets()
     {
-        Debug.Log("Give Bullets");
+        GunManager.bonusDamage += 2f;
+        Debug.Log("Bonus DMG: " + GunManager.bonusDamage);
     }
 }
