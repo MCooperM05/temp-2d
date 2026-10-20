@@ -2492,6 +2492,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DisplayShopUI
   shopUI: {fileID: 310030819}
+  shopAnimator: {fileID: 0}
 --- !u!61 &1003586680
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -3284,10 +3285,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerController
   speed: 5
+  playerAnimator: {fileID: 1515729167}
   characterController: {fileID: 1515729164}
   playerInputHandler: {fileID: 130263948}
   shopSceneName: prototype-shop
   playerRender: {fileID: 1515729159}
+  currentMovement: {x: 0, y: 0}
 --- !u!70 &1515729166
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
