@@ -11,7 +11,7 @@ public class PlayerController : MonoBehaviour
     [Header ("References")]
     [SerializeField] private Rigidbody2D characterController;
     [SerializeField] private PlayerInputHandler playerInputHandler;
-    [SerializeField] public string shopSceneName = "";
+    [SerializeField] public string shopSceneName = "WorldHub";
     [SerializeField] public SpriteRenderer playerRender;
 
     private Vector2 currentMovement;

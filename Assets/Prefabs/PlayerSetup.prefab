@@ -1070,7 +1070,7 @@ MonoBehaviour:
   speed: 3
   characterController: {fileID: 7974211163200749943}
   playerInputHandler: {fileID: 4803549992074841789}
-  shopSceneName: prototype-shop
+  shopSceneName: WorldHub
   playerRender: {fileID: 7031549803710399994}
 --- !u!1 &4771393668350029306
 GameObject:
