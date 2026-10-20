@@ -15,6 +15,7 @@ public class GunManager : MonoBehaviour
     [SerializeField] public float speed = 100f;
     [SerializeField] public float cooldown = 0.5f;
     public static float coolChange = 0f;
+    [SerializeField] private AudioSource gunShot;
 
     [Header("Trident Upgrade")]
     [SerializeField] public Sprite tridentSprite;
@@ -26,6 +27,7 @@ public class GunManager : MonoBehaviour
         if (playerInputHandler.ShootTriggered)
         {
             Debug.Log("Shot fired");
+            gunShot.Play();
             FireGun();
             playerInputHandler.shootAction.Disable();
             StartCoroutine(ShootCooldown());
