@@ -1074,6 +1074,8 @@ MonoBehaviour:
   openedChestSprite: {fileID: -5503087013248736640, guid: 72dddffd317b2b44babbde1ce28f71e7, type: 3}
   closedChestSprite: {fileID: -7420185212081706498, guid: 72dddffd317b2b44babbde1ce28f71e7, type: 3}
   lockedPrompt: {fileID: 208555234}
+  key: 0
+  isUnlocked: 0
 --- !u!50 &547571654
 Rigidbody2D:
   serializedVersion: 5
@@ -1135,7 +1137,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: -0.005402535, y: -0.02521205}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -1145,7 +1147,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 0.32, y: 0.32}
+  m_Size: {x: 0.25156653, y: 0.2695759}
   m_EdgeRadius: 0
 --- !u!1 &619394800
 GameObject:
