@@ -57,7 +57,8 @@ public class UseShopUI : MonoBehaviour
 
     void GiveGun()
     {
-        Debug.Log("Give Gun");
+        GunManager.coolChange += .25f;
+        Debug.Log("Cooldown: " + GunManager.coolChange);
     }
 
     public void BuyFlippers(GameObject item)

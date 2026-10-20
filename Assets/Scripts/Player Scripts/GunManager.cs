@@ -14,6 +14,7 @@ public class GunManager : MonoBehaviour
     public static float bonusDamage = 0f;
     [SerializeField] public float speed = 100f;
     [SerializeField] public float cooldown = 0.5f;
+    public static float coolChange = 0f;
 
     [Header("Trident Upgrade")]
     [SerializeField] public Sprite tridentSprite;
@@ -33,7 +34,7 @@ public class GunManager : MonoBehaviour
 
     IEnumerator ShootCooldown()
     {
-        yield return new WaitForSeconds(cooldown);
+        yield return new WaitForSeconds(cooldown - coolChange);
         playerInputHandler.shootAction.Enable();
     }
 
