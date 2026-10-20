@@ -131,11 +131,12 @@ GameObject:
   - component: {fileID: 6655500}
   - component: {fileID: 6655503}
   - component: {fileID: 6655502}
-  - component: {fileID: 6655504}
-  - component: {fileID: 6655505}
+  - component: {fileID: 6655506}
+  - component: {fileID: 6655507}
+  - component: {fileID: 6655508}
   m_Layer: 0
-  m_Name: Enemy
-  m_TagString: Enemy
+  m_Name: FishBoss
+  m_TagString: Boss
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -189,12 +190,12 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_MaskInteraction: 0
-  m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 4a07926e9bafab249bdef68138729b76, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 0.32, y: 0.32}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -208,8 +209,8 @@ Transform:
   m_GameObject: {fileID: 6655498}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 5.37, y: -1.69, z: 0}
-  m_LocalScale: {x: 2, y: 2, z: 1}
+  m_LocalPosition: {x: 2.67, y: 0.02, z: 0}
+  m_LocalScale: {x: 10.951752, y: 10.951752, z: 5.475876}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 969923847}
@@ -227,7 +228,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1
+  m_Mass: 4
   m_LinearDamping: 0
   m_AngularDamping: 0.05
   m_GravityScale: 1
@@ -241,7 +242,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 1
-  m_Constraints: 7
+  m_Constraints: 4
 --- !u!61 &6655503
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -276,19 +277,19 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: -0.000823617, y: 0.00035542995}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
-    newSize: {x: 1, y: 1}
+    oldSize: {x: 0.32, y: 0.32}
+    newSize: {x: 0.32, y: 0.32}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 0.34761608, y: 0.26634198}
   m_EdgeRadius: 0
---- !u!114 &6655504
+--- !u!114 &6655506
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -297,32 +298,47 @@ MonoBehaviour:
   m_GameObject: {fileID: 6655498}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7b81a4a533cdffd479b0bd570bb581bd, type: 3}
+  m_Script: {fileID: 11500000, guid: c5c7de70c4790c2428854f49f240e702, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::EnemyHealth
+  m_EditorClassIdentifier: '::'
+  moveSpeed: 3
+  minChangeTime: 1
+  maxChangeTime: 2
+--- !u!114 &6655507
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6655498}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b4bcdb657b7bd0459e99206422004ae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BossAI
+  playerTransform: {fileID: 1515729160}
+  firePoint: {fileID: 969923847}
+  projectilePrefab: {fileID: 5001802113932424766, guid: ad4a9950d582d9644b486d797acb377a, type: 3}
+  attackCooldown: 0.5
+  speed: 10
+--- !u!114 &6655508
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6655498}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b2e7ef0e11de67b4d85e145b1ac04ede, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BossHealth
   damageMaterial: {fileID: 2100000, guid: bf42df48a74d353478aa08b5378989cf, type: 2}
   defaultMaterial: {fileID: 2100000, guid: cf20dbf0fee94714f9c97d9e3a824b74, type: 2}
   goldAmount: 10
   healthBar: {fileID: 1860657218}
   goldPrefab: {fileID: 3445211244488667706, guid: e4de2c8aefaa06947a7b88ec65fc2a45, type: 3}
   playerHealthGold: {fileID: 1515729163}
---- !u!114 &6655505
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6655498}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b07f65eebf9af6642996f44c881c9c61, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::EnemyAI
-  playerTransform: {fileID: 1515729160}
-  firePoint: {fileID: 969923847}
-  projectilePrefab: {fileID: 5001802113932424766, guid: ad4a9950d582d9644b486d797acb377a, type: 3}
-  attackCooldown: 1
-  speed: 10
 --- !u!1 &370267777
 GameObject:
   m_ObjectHideFlags: 0
@@ -1117,7 +1133,7 @@ GameObject:
   - component: {fileID: 1156578867}
   m_Layer: 0
   m_Name: CollisionWalls
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1576,6 +1592,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 415410022575952973, guid: 7c5acbbb60cd7b14287ba62c451fa012, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5525628330199523015, guid: 7c5acbbb60cd7b14287ba62c451fa012, type: 3}
       propertyPath: m_LocalScale.x
       value: 2.0255418
@@ -1635,6 +1655,10 @@ PrefabInstance:
     - target: {fileID: 7135821368983390760, guid: 7c5acbbb60cd7b14287ba62c451fa012, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8549536955015325966, guid: 7c5acbbb60cd7b14287ba62c451fa012, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -26.752686
       objectReference: {fileID: 0}
     - target: {fileID: 8553369331156438663, guid: 7c5acbbb60cd7b14287ba62c451fa012, type: 3}
       propertyPath: m_Name
