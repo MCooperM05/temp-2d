@@ -7,6 +7,7 @@ public class PlayerController : MonoBehaviour
 {
     [Header("Movement Speeds")]
     [SerializeField] public float speed = 3.0f;
+    public static float bonusSpeed = 0f;
 
     [Header ("References")]
     [SerializeField] private Rigidbody2D characterController;
@@ -67,8 +68,8 @@ public class PlayerController : MonoBehaviour
     private void HandleMovement()
     {
         Vector2 worldDirection = CalculateWorldDirection();
-        currentMovement.x = worldDirection.x * speed;
-        currentMovement.y = worldDirection.y * speed;
+        currentMovement.x = worldDirection.x * (speed + bonusSpeed);
+        currentMovement.y = worldDirection.y * (speed + bonusSpeed);
 
         characterController.linearVelocity = currentMovement;
     }

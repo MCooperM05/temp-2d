@@ -15,7 +15,7 @@ public class PlayerHealthAndGold : MonoBehaviour
     [SerializeField] public Material damageMaterial;
     [SerializeField] public Material defaultMaterial;
 
-    [SerializeField] public float totalGold = 10f;
+    static public float totalGold = 0f;
     public static float savedHealth = 3f;
 
     [SerializeField] public TMP_Text playerGoldAmount;
@@ -25,6 +25,7 @@ public class PlayerHealthAndGold : MonoBehaviour
     void Start()
     {
         UpdateTotalGold(0f);
+        if(gameObject.scene.name == "WorldHub") savedHealth = 3f; 
         health = savedHealth;
 
         for (int i = 0; i < haveLife.Length; i++)
@@ -35,6 +36,7 @@ public class PlayerHealthAndGold : MonoBehaviour
 
         deathScreen.SetActive(false);
         Debug.Log("Player Health: " + health);
+        Debug.Log("PH&G on:" + gameObject.name + "in scene: " + gameObject.scene.name, gameObject);
     }
 
     public void TakeDamage(float damage)
@@ -63,6 +65,7 @@ public class PlayerHealthAndGold : MonoBehaviour
         Time.timeScale = 0f;
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.None;
+        UpdateTotalGold(-Mathf.Floor(totalGold / 2f));
     }
 
     IEnumerator FlashDamageMaterial()
@@ -82,7 +85,7 @@ public class PlayerHealthAndGold : MonoBehaviour
 
     public void UpdateTotalGold(float amount)
     {
-        totalGold = amount;
+        totalGold += amount;
         playerGoldAmount.text = totalGold.ToString();
     }
 }

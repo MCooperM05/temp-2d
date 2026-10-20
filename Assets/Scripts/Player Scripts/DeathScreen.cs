@@ -7,7 +7,7 @@ public class DeathScreen : MonoBehaviour
         Debug.Log("Respawn");
         PlayerHealthAndGold.savedHealth = 3f;
         Time.timeScale = 1f; //unfreeze game
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name); //reload current scene
+        SceneManager.LoadScene("WorldHub"); //reload current scene
     }
 
     public void QuitGame() {

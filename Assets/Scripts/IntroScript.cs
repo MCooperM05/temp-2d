@@ -36,7 +36,7 @@ public class IntroScript : MonoBehaviour
         }
 
         if (!doneTyping && Keyboard.current.enterKey.wasPressedThisFrame) {
-            typeSpeed -= 0.05f;
+            typeSpeed -= 0.45f;
         }
     }
 }
