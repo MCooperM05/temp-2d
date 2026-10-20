@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
-public class PlayerHealthAndGold : MonoBehaviour
+public class PlayerStats : MonoBehaviour
 {
     [SerializeField] public float health = 3f;
     
@@ -16,16 +16,28 @@ public class PlayerHealthAndGold : MonoBehaviour
     [SerializeField] public Material defaultMaterial;
 
     static public float totalGold = 0f;
+    static public int totalKeys = 0;
     public static float savedHealth = 3f;
 
     [SerializeField] public TMP_Text playerGoldAmount;
+
+    [SerializeField] public TMP_Text playerKeyAmount;
+    [SerializeField] public GameObject keysVisual;
 
     [SerializeField] public GameObject deathScreen;
 
     void Start()
     {
         UpdateTotalGold(0f);
+        UpdateTotalKeys(0);
         if(gameObject.scene.name == "WorldHub") savedHealth = 3f; 
+       
+        if (gameObject.scene.name == "WorldHub") // reset keys so the player cannot save up keys
+        {
+            totalKeys = 0;
+            keysVisual.SetActive(false);
+        }
+
         health = savedHealth;
 
         for (int i = 0; i < haveLife.Length; i++)
@@ -87,5 +99,11 @@ public class PlayerHealthAndGold : MonoBehaviour
     {
         totalGold += amount;
         playerGoldAmount.text = totalGold.ToString();
+    }
+
+    public void UpdateTotalKeys(int amount)
+    {
+        totalKeys += amount;
+        playerKeyAmount.text = totalKeys.ToString();
     }
 }

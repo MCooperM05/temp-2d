@@ -10,7 +10,7 @@ public class TempHurtPlayer : MonoBehaviour
         if (collision.gameObject.CompareTag("Player"))
         {
             Debug.Log("Player hit");
-            collision.gameObject.GetComponent<PlayerHealthAndGold>().TakeDamage(1f);
+            collision.gameObject.GetComponent<PlayerStats>().TakeDamage(1f);
         }
     }
 }

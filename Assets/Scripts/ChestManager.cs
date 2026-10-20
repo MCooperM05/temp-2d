@@ -13,6 +13,16 @@ public class ChestManager : MonoBehaviour
     public int key = 0;
     public bool isUnlocked = false;
     private bool isInteractable = false;
+    private GameObject player;
+
+    void Start()
+    {
+        player = GameObject.FindGameObjectWithTag("Player");
+        if (player != null)
+        {
+            Debug.Log("Player found!");
+        }
+    }
 
     void OnCollisionEnter2D(Collision2D collision)
     {

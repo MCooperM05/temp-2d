@@ -18,12 +18,12 @@ public class UseShopUI : MonoBehaviour
     {
         ShopItem itemData = item.GetComponent<ShopItem>();
 
-        if (PlayerHealthAndGold.totalGold >= itemData.itemPrice)
+        if (PlayerStats.totalGold >= itemData.itemPrice)
         {
             item.SetActive(false);
             boughtItems.Add(itemData.itemName);
 
-            player.GetComponent<PlayerHealthAndGold>().UpdateTotalGold(-itemData.itemPrice);
+            player.GetComponent<PlayerStats>().UpdateTotalGold(-itemData.itemPrice);
 
             Debug.Log("Item bought: " + itemData.itemName);
             return true;
