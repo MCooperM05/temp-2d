@@ -1,3 +1,4 @@
+using UnityEditor.SearchService;
 using UnityEngine;
 
 public class EnterArea : MonoBehaviour
@@ -7,6 +8,8 @@ public class EnterArea : MonoBehaviour
     public Transform areaTransform;
     public int defaultSize = 5;
     public int areaSize;
+    public GameObject[] texturesForRoom;
+    public GameObject[] entranceColliders;
 
 
     void Start()
@@ -14,6 +17,15 @@ public class EnterArea : MonoBehaviour
         if (defaultTransform == null)
         {
             defaultTransform = exploreCamera.transform;
+        }
+        if (exploreCamera == null)
+        {
+            GameObject camObj = GameObject.FindWithTag("MainCamera");
+            exploreCamera = camObj.GetComponent<Camera>();
+        }
+        for (int i = 0; i < texturesForRoom.Length; i++)
+        {
+            texturesForRoom[i].SetActive(false);
         }
     }
 
@@ -23,6 +35,15 @@ public class EnterArea : MonoBehaviour
         {
             exploreCamera.transform.SetPositionAndRotation(areaTransform.position, areaTransform.rotation);
             exploreCamera.orthographicSize = areaSize;
+            gameObject.GetComponent<SpriteRenderer>().enabled = false;
+            for (int i = 0; i < texturesForRoom.Length; i++)
+            {
+                texturesForRoom[i].SetActive(true);
+            }
+            for (int i = 0; i < entranceColliders.Length; i++)
+            {
+                entranceColliders[i].SetActive(false);
+            }
         }
     }
 
@@ -32,6 +53,15 @@ public class EnterArea : MonoBehaviour
         {
             exploreCamera.transform.SetPositionAndRotation(defaultTransform.position, defaultTransform.rotation);
             exploreCamera.orthographicSize = defaultSize;
+            gameObject.GetComponent<SpriteRenderer>().enabled = true;
+            for (int i = 0; i < texturesForRoom.Length; i++)
+            {
+                texturesForRoom[i].SetActive(false);
+            }
+            for (int i = 0; i < entranceColliders.Length; i++)
+            {
+                entranceColliders[i].SetActive(false);
+            }
         }
     }
 }

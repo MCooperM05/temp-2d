@@ -14,7 +14,7 @@ public class BossHealth : MonoBehaviour
     [SerializeField] public Slider healthBar;
     [SerializeField] public GameObject goldPrefab;
 
-    [SerializeField] public PlayerHealthAndGold playerHealthGold;
+    [SerializeField] public PlayerStats playerStats;
 
     void Awake()
     {
@@ -50,7 +50,7 @@ public class BossHealth : MonoBehaviour
         DisableEnemy();
         gold.GetComponent<GoldManager>().FadeGold();
         
-        playerHealthGold.UpdateTotalGold(goldAmount);
+        playerStats.UpdateTotalGold(goldAmount);
 
         healthBar.gameObject.SetActive(false);
 
