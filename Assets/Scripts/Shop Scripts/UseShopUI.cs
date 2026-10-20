@@ -5,6 +5,7 @@ public class UseShopUI : MonoBehaviour
 {
     [SerializeField] private GameObject player;
     [SerializeField] public PlayerController playerController;
+    [SerializeField] private AudioSource purchaseSound;
     public static List<string> boughtItems = new List<string>();
 
     void Start()
@@ -36,6 +37,7 @@ public class UseShopUI : MonoBehaviour
     {
         if (TryBuy(item))
         {
+            purchaseSound.Play();
             GiveGun();
         }
         // ShopItem itemData = item.GetComponent<ShopItem>();
@@ -65,6 +67,7 @@ public class UseShopUI : MonoBehaviour
     {
         if (TryBuy(item))
         {
+            purchaseSound.Play();
             GiveFlippers();
         }
         // ShopItem itemData = item.GetComponent<ShopItem>();
@@ -96,6 +99,7 @@ public class UseShopUI : MonoBehaviour
     {
         if (TryBuy(item))
         {
+            purchaseSound.Play();
             GiveBullets();
         }
         // ShopItem itemData = item.GetComponent<ShopItem>();

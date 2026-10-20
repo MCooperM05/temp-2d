@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -15,6 +16,10 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private PlayerInputHandler playerInputHandler;
     [SerializeField] public string shopSceneName = "WorldHub";
     [SerializeField] public SpriteRenderer playerRender;
+
+    [Header ("Sounds")]
+    [SerializeField] private AudioSource swimSound;
+    [SerializeField] private AudioSource walkSound;
 
     private bool isOnLand = true;
     public Vector2 currentMovement;
@@ -100,5 +105,17 @@ public class PlayerController : MonoBehaviour
         }
 
         characterController.linearVelocity = currentMovement;
+    }
+
+    // Access the AudioSource component and play the swim sound effect
+    public void PlaySwimSound()
+    {
+        swimSound.Play();
+    }
+
+    // Access the AudioSource component and play the land sound effect
+    public void PlayWalkSound()
+    {
+        walkSound.Play();
     }
 }
