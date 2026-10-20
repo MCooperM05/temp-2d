@@ -865,6 +865,7 @@ GameObject:
   - component: {fileID: 1545091684124650244}
   - component: {fileID: 8037381083215607229}
   - component: {fileID: 8811610852541011428}
+  - component: {fileID: 7633416699446711304}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -937,7 +938,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_MaskInteraction: 0
-  m_Sprite: {fileID: 6866619410376665732, guid: d900edcd4abe78b49b7ae66574a2faf7, type: 3}
+  m_Sprite: {fileID: 1761429277838173123, guid: 8af3b48885b1a5a45a42caf7e5641aaa, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -1030,6 +1031,8 @@ MonoBehaviour:
   speed: 20
   cooldown: 0.5
   tridentSprite: {fileID: 7483628475688220127, guid: dbd7f2b101a0ca549a698563ddbeca1a, type: 3}
+  tridentRotation: -90
+  tridentScale: 10
 --- !u!114 &8037381083215607229
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1068,10 +1071,34 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerController
   speed: 3
+  playerAnimator: {fileID: 7633416699446711304}
   characterController: {fileID: 7974211163200749943}
   playerInputHandler: {fileID: 4803549992074841789}
   shopSceneName: WorldHub
   playerRender: {fileID: 7031549803710399994}
+  currentMovement: {x: 0, y: 0}
+--- !u!95 &7633416699446711304
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4421778363967571492}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 765b98a1739ca8a4ea3cc41aed25b3b9, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &4771393668350029306
 GameObject:
   m_ObjectHideFlags: 0
