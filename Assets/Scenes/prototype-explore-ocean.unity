@@ -3097,7 +3097,6 @@ GameObject:
   - component: {fileID: 1515729162}
   - component: {fileID: 1515729163}
   - component: {fileID: 1515729165}
-  - component: {fileID: 1515729168}
   - component: {fileID: 1515729167}
   m_Layer: 0
   m_Name: Player
@@ -3223,6 +3222,7 @@ MonoBehaviour:
   - {fileID: 559556222}
   damageMaterial: {fileID: 2100000, guid: bf42df48a74d353478aa08b5378989cf, type: 2}
   defaultMaterial: {fileID: 2100000, guid: 1163abb039f239548825f002988962d2, type: 2}
+  totalGold: 10
   playerGoldAmount: {fileID: 847048003}
 --- !u!50 &1515729164
 Rigidbody2D:
@@ -3327,20 +3327,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &1515729168
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1515729156}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 762d1ed1bb8bfc649a56a1546109dd18, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::GoldManager
-  goldText: {fileID: 847048003}
-  goldAmount: 10
 --- !u!1 &1702017099
 GameObject:
   m_ObjectHideFlags: 0
@@ -4318,6 +4304,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2ab3391fa9f0ace4080125143ead9cf2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UseShopUI
+  player: {fileID: 1515729156}
 --- !u!1 &2134270521
 GameObject:
   m_ObjectHideFlags: 0

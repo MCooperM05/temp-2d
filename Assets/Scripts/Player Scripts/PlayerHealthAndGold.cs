@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
-public class PlayerHealth : MonoBehaviour
+public class PlayerHealthAndGold : MonoBehaviour
 {
     [SerializeField] public float health = 3f;
     
@@ -15,7 +15,7 @@ public class PlayerHealth : MonoBehaviour
     [SerializeField] public Material damageMaterial;
     [SerializeField] public Material defaultMaterial;
 
-    [SerializeField] public static float totalGold = 0f;
+    [SerializeField] public float totalGold = 10f;
 
     [SerializeField] public TMP_Text playerGoldAmount;
 
@@ -57,7 +57,7 @@ public class PlayerHealth : MonoBehaviour
 
     public void UpdateTotalGold(float amount)
     {
-        totalGold += amount;
+        totalGold = amount;
         playerGoldAmount.text = totalGold.ToString();
     }
 }
