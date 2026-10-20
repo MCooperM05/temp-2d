@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 
 public class BossManager : MonoBehaviour
 {
-    [SerializeField] public string mainMenuSceneName = "";
+    [SerializeField] public string sceneName = "";
 
     void Update()
     {
@@ -14,13 +14,13 @@ public class BossManager : MonoBehaviour
 
         if (Enemy == null)
         {
-            StartCoroutine(BackToMainMenu());
+            StartCoroutine(BackToScene());
         }
     }
 
-    IEnumerator BackToMainMenu()
+    IEnumerator BackToScene()
     {
         yield return new WaitForSeconds(2f);
-        SceneManager.LoadScene(mainMenuSceneName);
+        SceneManager.LoadScene(sceneName);
     }
 }
