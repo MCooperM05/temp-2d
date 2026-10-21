@@ -1,12 +1,18 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody2D))]
 public class BossMovement : MonoBehaviour
 {
     [Header("Movement Settings")]
-    [SerializeField] private float moveSpeed = 3f;
-    [SerializeField] private float minChangeTime = 1f;
-    [SerializeField] private float maxChangeTime = 3f;
+    [SerializeField] private float moveSpeed = 300f;
+    [SerializeField] private float minChangeTime = 10f;
+    [SerializeField] private float maxChangeTime = 15f;
+
+    [Header("Combat Settings")]
+    [SerializeField] private float dashCooldown = 8f;
+    private bool isOnDashCooldown;
 
     private Rigidbody2D rb;
     private Vector2 movementDirection = new Vector2(1, 0).normalized;
@@ -24,18 +30,16 @@ public class BossMovement : MonoBehaviour
 
     void Update()
     {
-        // Countdown the timer
-        directionChangeTimer -= Time.deltaTime;
-        if (directionChangeTimer <= 0f)
-        {
-            //DashAttack();
-        }
+        if (isOnDashCooldown == false) {
+                DashAttack();
+            }
     }
 
     void FixedUpdate()
     {
         // Apply physics movement in FixedUpdate for smooth collision interactions
-        rb.linearVelocity = movementDirection * moveSpeed;
+        //movementDirection.x = movementDirection.x * (moveSpeed * Time.deltaTime);
+        rb.linearVelocity = movementDirection * (moveSpeed * Time.deltaTime);
     }
 
     private void ChooseNewDirection()
@@ -55,14 +59,28 @@ public class BossMovement : MonoBehaviour
         if (collision.gameObject.CompareTag("Wall"))
         {
             Debug.Log("hit wall");
-            DashAttack();
+            if (GetComponent<SpriteRenderer>().flipX == true){
+                GetComponent<SpriteRenderer>().flipX = false;
+            } else {
+                GetComponent<SpriteRenderer>().flipX = true;
+            }
+            if (isOnDashCooldown == false) {
+                DashAttack();
+            }
         }
+    }
+
+    private IEnumerator DashAttackCooldownRoutine()
+    {
+        isOnDashCooldown = true;
+        yield return new WaitForSeconds(dashCooldown);
+        isOnDashCooldown = false;
     }
 
     private void DashAttack()
     {
         movementDirection = movementDirection * -1;
-
+        StartCoroutine(DashAttackCooldownRoutine());
         // Reset the timer to a random interval
         directionChangeTimer = Random.Range(minChangeTime, maxChangeTime);
     }
