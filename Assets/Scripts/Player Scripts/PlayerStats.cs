@@ -25,6 +25,7 @@ public class PlayerStats : MonoBehaviour
     [SerializeField] public GameObject keysVisual;
 
     [SerializeField] public GameObject deathScreen;
+    [SerializeField] public GameObject pauseScreen;
 
     void Start()
     {
@@ -47,6 +48,7 @@ public class PlayerStats : MonoBehaviour
         }
 
         deathScreen.SetActive(false);
+        pauseScreen.SetActive(false);
         Debug.Log("Player Health: " + health);
         Debug.Log("PH&G on:" + gameObject.name + "in scene: " + gameObject.scene.name, gameObject);
     }

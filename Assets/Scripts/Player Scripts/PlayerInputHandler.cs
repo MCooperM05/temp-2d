@@ -14,12 +14,15 @@ public class PlayerInputHandler : MonoBehaviour
     [Header("Action Name References")]
     [SerializeField] private string movement = "Movement";
     [SerializeField] private string shoot = "Shoot";
+    [SerializeField] private string menu = "Menu";
 
     public InputAction movementAction;
     public InputAction shootAction;
+    public InputAction menuAction;
 
     public Vector2 MovementInput {  get; private set; }
     public bool ShootTriggered { get; private set; }
+    public bool MenuTriggered { get; private set; }
 
     private void Awake()
     {
@@ -27,6 +30,7 @@ public class PlayerInputHandler : MonoBehaviour
 
         movementAction = mapReference.FindAction(movement);
         shootAction = mapReference.FindAction(shoot);
+        menuAction = mapReference.FindAction(menu);
 
         SubscribeActionValuesToInputEvents();
     }
@@ -38,6 +42,9 @@ public class PlayerInputHandler : MonoBehaviour
 
         shootAction.performed += inputInfo => ShootTriggered = true;
         shootAction.canceled += inputInfo => ShootTriggered = false;
+
+        // menuAction.performed += inputInfo => MenuTriggered = !MenuTriggered;
+        // menuAction.canceled += inputInfo => MenuTriggered = false;
     }
 
     private void OnEnable()

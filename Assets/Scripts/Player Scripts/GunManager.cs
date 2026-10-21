@@ -24,6 +24,7 @@ public class GunManager : MonoBehaviour
 
     void Update()
     {
+        if (Time.timeScale == 0f) return;
         if (playerInputHandler.ShootTriggered)
         {
             Debug.Log("Shot fired");
