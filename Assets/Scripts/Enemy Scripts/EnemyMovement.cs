@@ -7,13 +7,20 @@ using System.Collections.Generic;
 public class EnemyMovement : MonoBehaviour
 {
     [Header("Movement Settings")]
-    [SerializeField] private float moveSpeed = 3f;
+    [SerializeField] private float moveSpeed = 1.5f;
+    [SerializeField] private Rigidbody2D enemyRb;
 
     [Header ("Damage Settings")]
     [SerializeField] private float damage;
     [SerializeField] private GameObject attackCollider;
     
     private GameObject player;
+    private Transform playerTransform;
+    private bool isAttacking = false;
+    // private Vector2 currentMovement;
+    public float smoothTime = 0.3f;
+    private Vector3 velocity = new Vector3(0,0,0);
+
 
     void Awake()
     {
@@ -26,17 +33,33 @@ public class EnemyMovement : MonoBehaviour
 
     void Update()
     {
-        Transform TargetObjTransform = player.transform;
+        HandleRotation();
+        HandleMovement();
+    }
 
-        Vector3 targ = TargetObjTransform.position;
-            targ.z = 0f;
+    public void HandleRotation()
+    {
+        playerTransform = player.transform;
 
-            Vector3 objectPos = transform.position;
-            targ.x = targ.x - objectPos.x;
-            targ.y = targ.y - objectPos.y;
+        Vector3 targ = playerTransform.position;
+        targ.z = 0f;
 
-            float angle = Mathf.Atan2(targ.y, targ.x) * Mathf.Rad2Deg;
-            transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle));
+        Vector3 objectPos = transform.position;
+        targ.x = targ.x - objectPos.x;
+        targ.y = targ.y - objectPos.y;
+
+        float angle = Mathf.Atan2(targ.y, targ.x) * Mathf.Rad2Deg;
+        transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle - 90));
+    }
+
+    public void HandleMovement()
+    {
+        transform.position = Vector3.SmoothDamp(
+        transform.position,
+        playerTransform.position,
+        ref velocity,
+        smoothTime * moveSpeed
+        );
     }
 
     public void AttackEnable()
