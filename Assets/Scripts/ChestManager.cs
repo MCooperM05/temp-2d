@@ -4,6 +4,7 @@ using UnityEngine.SceneManagement;
 using TMPro;
 using UnityEngine.InputSystem;
 using System.Runtime.CompilerServices;
+using UnityEngine.InputSystem.Controls;
 
 public class ChestManager : MonoBehaviour
 {
@@ -14,7 +15,8 @@ public class ChestManager : MonoBehaviour
     [SerializeField] private int requiredKeyAmount; // Chests can have more than 1 key needed to open
 
     public int keys;
-    public bool isUnlocked = false;
+    public bool isOpened = false;
+    public bool isUnlockable = false;
     private bool isInteractable = false;
     private GameObject player;
 
@@ -56,14 +58,15 @@ public class ChestManager : MonoBehaviour
         keys = PlayerStats.totalKeys;
         if (keys >= requiredKeyAmount)
         {
-            isUnlocked = true;
+            isUnlockable = true;
         }
 
-        if (isUnlocked && isInteractable && Keyboard.current.eKey.wasPressedThisFrame) // subtract key amount from player
+        if (!isOpened && isUnlockable && isInteractable && Keyboard.current.eKey.wasPressedThisFrame) // subtract key amount from player
         {
             gameObject.GetComponent<SpriteRenderer>().sprite = openedChestSprite;
             player.GetComponent<PlayerStats>().UpdateTotalKeys(-requiredKeyAmount);
-        } else if (!isUnlocked && isInteractable && Keyboard.current.eKey.wasPressedThisFrame) // show amount of keys needed to unlock
+            isOpened = true; // chest has been opened and cannot be messed with
+        } else if (!isOpened && !isUnlockable && isInteractable && Keyboard.current.eKey.wasPressedThisFrame) // show amount of keys needed to unlock
         {
             StartCoroutine(ShowLockedText());
         }
