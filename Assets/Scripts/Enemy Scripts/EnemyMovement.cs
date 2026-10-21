@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody2D))]
@@ -5,56 +6,27 @@ public class EnemyMovement : MonoBehaviour
 {
     [Header("Movement Settings")]
     [SerializeField] private float moveSpeed = 3f;
-    [SerializeField] private float minChangeTime = 1f;
-    [SerializeField] private float maxChangeTime = 3f;
 
-    private Rigidbody2D rb;
-    private Vector2 movementDirection;
-    private float directionChangeTimer;
+    [Header ("Damage Settings")]
+    [SerializeField] private float damage;
+    [SerializeField] private GameObject attackCollider;
+    
+    private GameObject player;
 
-    void Start()
+    void Awake()
     {
-        rb = GetComponent<Rigidbody2D>();
-        
-        // Ensure gravity doesn't pull the top-down enemy down
-        rb.gravityScale = 0f; 
-        
-        ChooseNewDirection();
+        if (player == null) player = GameObject.FindGameObjectWithTag("Player");
     }
 
-    void Update()
+    
+
+    public void AttackEnable()
     {
-        // Countdown the timer
-        directionChangeTimer -= Time.deltaTime;
-        if (directionChangeTimer <= 0f)
-        {
-            ChooseNewDirection();
-        }
+        attackCollider.SetActive(true);
     }
 
-    void FixedUpdate()
+    public void AttackDisable()
     {
-        // Apply physics movement in FixedUpdate for smooth collision interactions
-        rb.linearVelocity = movementDirection * moveSpeed;
-    }
-
-    private void ChooseNewDirection()
-    {
-        // Generate a random 2D direction and normalize it
-        float randomX = Random.Range(-1f, 1f);
-        float randomY = Random.Range(-1f, 1f);
-        movementDirection = new Vector2(randomX, randomY).normalized;
-
-        // Reset the timer to a random interval
-        directionChangeTimer = Random.Range(minChangeTime, maxChangeTime);
-    }
-
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        // Instantly switch directions if hitting an obstacle (e.g., walls or tilemaps)
-        if (collision.gameObject.CompareTag("Wall"))
-        {
-            ChooseNewDirection();
-        }
+        attackCollider.SetActive(false);
     }
 }
