@@ -6,10 +6,10 @@ public class BossMovement : MonoBehaviour
     [Header("Movement Settings")]
     [SerializeField] private float moveSpeed = 3f;
     [SerializeField] private float minChangeTime = 1f;
-    [SerializeField] private float maxChangeTime = 2f;
+    [SerializeField] private float maxChangeTime = 3f;
 
     private Rigidbody2D rb;
-    private Vector2 movementDirection;
+    private Vector2 movementDirection = new Vector2(1, 0).normalized;
     private float directionChangeTimer;
 
     void Start()
@@ -19,7 +19,7 @@ public class BossMovement : MonoBehaviour
         // Ensure gravity doesn't pull the top-down enemy down
         rb.gravityScale = 0f; 
         
-        ChooseNewDirection();
+        DashAttack();
     }
 
     void Update()
@@ -28,7 +28,7 @@ public class BossMovement : MonoBehaviour
         directionChangeTimer -= Time.deltaTime;
         if (directionChangeTimer <= 0f)
         {
-            ChooseNewDirection();
+            //DashAttack();
         }
     }
 
@@ -54,7 +54,16 @@ public class BossMovement : MonoBehaviour
         // Instantly switch directions if hitting an obstacle (e.g., walls or tilemaps)
         if (collision.gameObject.CompareTag("Wall"))
         {
-            ChooseNewDirection();
+            Debug.Log("hit wall");
+            DashAttack();
         }
+    }
+
+    private void DashAttack()
+    {
+        movementDirection = movementDirection * -1;
+
+        // Reset the timer to a random interval
+        directionChangeTimer = Random.Range(minChangeTime, maxChangeTime);
     }
 }
