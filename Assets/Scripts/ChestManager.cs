@@ -11,6 +11,8 @@ public class ChestManager : MonoBehaviour
     [SerializeField] private Sprite openedChestSprite;
     [SerializeField] private Sprite closedChestSprite;
     [SerializeField] private GameObject lockedPrompt;
+    [SerializeField] private GameObject giveHeart; // give extra heart when player opens chest
+    [SerializeField] private float extraHealthAmount = 1f;
     [SerializeField] private TMP_Text lockedText;
     [SerializeField] private int requiredKeyAmount; // Chests can have more than 1 key needed to open
 
@@ -65,6 +67,7 @@ public class ChestManager : MonoBehaviour
         {
             gameObject.GetComponent<SpriteRenderer>().sprite = openedChestSprite;
             player.GetComponent<PlayerStats>().UpdateTotalKeys(-requiredKeyAmount);
+            giveExtraHealth();
             isOpened = true; // chest has been opened and cannot be messed with
         } else if (!isOpened && !isUnlockable && isInteractable && Keyboard.current.eKey.wasPressedThisFrame) // show amount of keys needed to unlock
         {
@@ -77,5 +80,10 @@ public class ChestManager : MonoBehaviour
         lockedPrompt.SetActive(true);
         yield return new WaitForSeconds(2.5f);
         lockedPrompt.SetActive(false);
+    }
+
+    public void giveExtraHealth()
+    {
+        player.GetComponent<PlayerStats>().IncreaseHealth(extraHealthAmount); // reset player health to full
     }
 }

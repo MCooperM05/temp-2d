@@ -8,9 +8,8 @@ using TMPro;
 public class PlayerStats : MonoBehaviour
 {
     [SerializeField] public float health = 3f;
-    
-    [SerializeField] public GameObject[] haveLife;
-    [SerializeField] public GameObject[] noLife;
+    [SerializeField] public float maxHealth = 3f;
+    [SerializeField] public HealthUI healthUI;
     
     [SerializeField] public Material damageMaterial;
     [SerializeField] public Material defaultMaterial;
@@ -18,6 +17,7 @@ public class PlayerStats : MonoBehaviour
     static public float totalGold = 0f;
     static public int totalKeys = 0;
     public static float savedHealth = 3f;
+    public static float savedMaxHealth = 3f;
 
     [SerializeField] public TMP_Text playerGoldAmount;
 
@@ -26,6 +26,12 @@ public class PlayerStats : MonoBehaviour
 
     [SerializeField] public GameObject deathScreen;
     [SerializeField] public GameObject pauseScreen;
+
+    void Awake()
+    {
+        maxHealth = savedMaxHealth;
+        health = Mathf.Min(savedHealth, maxHealth);
+    }
 
     void Start()
     {
@@ -37,14 +43,6 @@ public class PlayerStats : MonoBehaviour
         {
             totalKeys = 0;
             keysVisual.SetActive(false);
-        }
-
-        health = savedHealth;
-
-        for (int i = 0; i < haveLife.Length; i++)
-        {
-            haveLife[i].SetActive(i < health);
-            noLife[i].SetActive(i >= health);
         }
 
         deathScreen.SetActive(false);
@@ -62,8 +60,7 @@ public class PlayerStats : MonoBehaviour
         if (health < 0f) health = 0f;
         savedHealth = health;
 
-        haveLife[(int)health].SetActive(false);
-        noLife[(int)health].SetActive(true);
+        healthUI.UpdateHearts();
 
         if (health <= 0f) {
             Die();
@@ -95,6 +92,17 @@ public class PlayerStats : MonoBehaviour
         {
             TakeDamage(1f);
         }
+    }
+
+    public void IncreaseHealth(float amount)
+    {
+        maxHealth += amount;
+        health = maxHealth;
+
+        savedMaxHealth = maxHealth;
+        savedHealth = health;
+
+        healthUI.AddHearts();
     }
 
     public void UpdateTotalGold(float amount)
