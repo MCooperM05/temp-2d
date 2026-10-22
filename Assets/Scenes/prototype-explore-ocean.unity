@@ -1499,6 +1499,10 @@ PrefabInstance:
       propertyPath: sceneToLoad
       value: WorldHub
       objectReference: {fileID: 0}
+    - target: {fileID: 1848822382665138367, guid: 747656283e22eaa48afba81b8a529482, type: 3}
+      propertyPath: pressEPrompt
+      value: 
+      objectReference: {fileID: 1427984679}
     - target: {fileID: 2299643734505816869, guid: 747656283e22eaa48afba81b8a529482, type: 3}
       propertyPath: m_Name
       value: DiveStation (1)
@@ -2051,6 +2055,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7c5acbbb60cd7b14287ba62c451fa012, type: 3}
+--- !u!1 &1427984679 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3506225844311856624, guid: 7c5acbbb60cd7b14287ba62c451fa012, type: 3}
+  m_PrefabInstance: {fileID: 1427984678}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1429458743
 GameObject:
   m_ObjectHideFlags: 0
@@ -2598,6 +2607,10 @@ PrefabInstance:
       propertyPath: sceneToLoad
       value: prototype-boss-fight
       objectReference: {fileID: 0}
+    - target: {fileID: 1848822382665138367, guid: 747656283e22eaa48afba81b8a529482, type: 3}
+      propertyPath: pressEPrompt
+      value: 
+      objectReference: {fileID: 1427984679}
     - target: {fileID: 2299643734505816869, guid: 747656283e22eaa48afba81b8a529482, type: 3}
       propertyPath: m_Name
       value: DiveStation

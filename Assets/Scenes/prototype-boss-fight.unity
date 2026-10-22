@@ -611,7 +611,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DivingStation
   sceneToLoad: prototype-explore-ocean
-  pressEPrompt: {fileID: 0}
+  pressEPrompt: {fileID: 1109170304890369573}
 --- !u!61 &794528579
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -750,6 +750,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2cd98f73bd9624548b50b16d4b846280, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
+  healthBar: {fileID: 0}
 --- !u!1 &1070732835
 GameObject:
   m_ObjectHideFlags: 0
@@ -1452,6 +1453,11 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 857722315}
   m_SourcePrefab: {fileID: 100100000, guid: 7c5acbbb60cd7b14287ba62c451fa012, type: 3}
+--- !u!1 &1109170304890369573 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3506225844311856624, guid: 7c5acbbb60cd7b14287ba62c451fa012, type: 3}
+  m_PrefabInstance: {fileID: 1109170304890369572}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

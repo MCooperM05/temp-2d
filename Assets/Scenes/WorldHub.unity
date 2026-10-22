@@ -3212,6 +3212,10 @@ PrefabInstance:
       propertyPath: pressEPrompt
       value: 
       objectReference: {fileID: 1636096359}
+    - target: {fileID: 1896315167927157643, guid: 747656283e22eaa48afba81b8a529482, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2299643734505816869, guid: 747656283e22eaa48afba81b8a529482, type: 3}
       propertyPath: m_Name
       value: DiveStation
