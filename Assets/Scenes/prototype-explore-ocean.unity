@@ -10315,7 +10315,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8811610852541011428, guid: 7c5acbbb60cd7b14287ba62c451fa012, type: 3}
       propertyPath: speed
-      value: 10
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 9016466064763760918, guid: 7c5acbbb60cd7b14287ba62c451fa012, type: 3}
       propertyPath: m_AnchorMax.y
@@ -16090,6 +16090,22 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
+--- !u!1 &2070512288 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 602833614725083499, guid: a89c2288410a6f54096a291bdcc9c1f6, type: 3}
+  m_PrefabInstance: {fileID: 8122646194663377328}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &2070512290 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2525374441702024910, guid: a89c2288410a6f54096a291bdcc9c1f6, type: 3}
+  m_PrefabInstance: {fileID: 8122646194663377328}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2070512288}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TextMeshProUGUI
 --- !u!1 &2072702652
 GameObject:
   m_ObjectHideFlags: 0
@@ -17035,6 +17051,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: ChestRoom
       objectReference: {fileID: 0}
+    - target: {fileID: 7794773168207964644, guid: a89c2288410a6f54096a291bdcc9c1f6, type: 3}
+      propertyPath: lootedText
+      value: 
+      objectReference: {fileID: 2070512290}
+    - target: {fileID: 7794773168207964644, guid: a89c2288410a6f54096a291bdcc9c1f6, type: 3}
+      propertyPath: lootedPrompt
+      value: 
+      objectReference: {fileID: 2070512288}
     - target: {fileID: 8262063058795136475, guid: a89c2288410a6f54096a291bdcc9c1f6, type: 3}
       propertyPath: defaultSize
       value: 5

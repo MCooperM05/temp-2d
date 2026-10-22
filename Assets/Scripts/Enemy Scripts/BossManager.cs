@@ -20,6 +20,17 @@ public class BossManager : MonoBehaviour
     public int keys;
 
     bool bossDefeated = false;
+    public static bool bossBeaten = false;
+
+    void Start() {
+        if (bossBeaten)
+        {
+            BossDefeated();
+
+            GameObject bar = GameObject.FindGameObjectWithTag("healthBar");
+            if (bar != null) bar.SetActive(false);
+        }
+    }
 
     void Update()
     {
@@ -28,7 +39,7 @@ public class BossManager : MonoBehaviour
         GameObject boss = GameObject.FindGameObjectWithTag("Boss");
         keys = PlayerStats.totalKeys;
 
-        if (boss == null && keys != 1)
+        if (boss == null)
         {
             SpawnBoss();
             return;
@@ -62,6 +73,7 @@ public class BossManager : MonoBehaviour
             diveStations[i].SetActive(true);
         }
 
+        bossBeaten = true;
         Debug.Log("Boss Defeated");
     }
 
