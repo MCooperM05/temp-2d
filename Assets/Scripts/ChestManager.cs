@@ -15,6 +15,7 @@ public class ChestManager : MonoBehaviour
     [SerializeField] private GameObject lockedPrompt;
     [SerializeField] private GameObject lootedPrompt;
     [SerializeField] private GameObject giveHeart; // give extra heart when player opens chest
+    [SerializeField] private GameObject bubbles; // show bubbles when chest opens
     [SerializeField] private float extraHealthAmount = 1f;
     [SerializeField] private TMP_Text lockedText;
     [SerializeField] private TMP_Text lootedText;
@@ -85,6 +86,7 @@ public class ChestManager : MonoBehaviour
         } else if (PlayerStats.totalKeys >= requiredKeyAmount){
             gameObject.GetComponent<SpriteRenderer>().sprite = openedChestSprite;
             player.GetComponent<PlayerStats>().UpdateTotalKeys(-requiredKeyAmount);
+            ShowExtraLife();
             giveExtraHealth();
             isOpened = true; // chest has been opened and cannot be messed with
             lootedChests.Add(chestID);
@@ -129,6 +131,27 @@ public class ChestManager : MonoBehaviour
         prompt.SetActive(true);
         yield return new WaitForSeconds(2.5f);
         prompt.SetActive(false);
+    }
+
+    public void ShowExtraLife()
+    {
+        bubbles.SetActive(true);
+        StartCoroutine(SwapBubblesForHeart());
+    }
+
+    IEnumerator SwapBubblesForHeart()
+    {
+        // when bubble animation finishes playing
+        yield return new WaitForSeconds(bubbles.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).length);
+        bubbles.SetActive(false);
+        giveHeart.SetActive(true);
+        StartCoroutine(FadeHeart());
+    }
+
+    IEnumerator FadeHeart()
+    {
+        yield return new WaitForSeconds(2f);
+        giveHeart.SetActive(false);
     }
 
     // IEnumerator ShowLockedText()
