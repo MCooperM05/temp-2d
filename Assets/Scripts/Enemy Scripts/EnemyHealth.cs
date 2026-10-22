@@ -13,6 +13,8 @@ public class EnemyHealth : MonoBehaviour
 
     // [SerializeField] public Slider healthBar;
     [SerializeField] public GameObject goldPrefab;
+    [SerializeField] public GameObject bubbleObj;
+    [SerializeField] public Animator anim;
 
     [SerializeField] public PlayerStats playerStats;
 
@@ -31,7 +33,7 @@ public class EnemyHealth : MonoBehaviour
         if (health <= 0f)
         {
             DisableEnemy();
-            GiveGold();
+            StartCoroutine(EnemyDeath());
         }
 
         StartCoroutine(FlashDamageMaterial());
@@ -64,5 +66,18 @@ public class EnemyHealth : MonoBehaviour
         GetComponent<Collider2D>().enabled = false;
         GetComponent<SpriteRenderer>().enabled = false;
         GetComponent<EnemyMovement>().enabled = false;
+        GetComponent<Rigidbody2D>().linearVelocity = Vector2.zero;
+    }
+
+    IEnumerator EnemyDeath() // after death, play bubble popping and give gold to player
+    {
+        bubbleObj.SetActive(true);
+
+        anim.SetBool("isDead", true);
+        yield return new WaitForSeconds(anim.GetCurrentAnimatorStateInfo(0).length);
+
+        bubbleObj.SetActive(false);
+
+        GiveGold();
     }
 }
