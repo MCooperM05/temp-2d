@@ -1,11 +1,17 @@
 using UnityEngine;
 using System.Collections.Generic;
+using System.Collections;
+using TMPro;
+using System;
 
 public class UseShopUI : MonoBehaviour
 {
     [SerializeField] private GameObject player;
     [SerializeField] public PlayerController playerController;
     [SerializeField] private AudioSource purchaseSound;
+
+    [SerializeField] public TMP_Text shopMessageText;
+
     public static List<string> boughtItems = new List<string>();
 
     void Start()
@@ -26,10 +32,12 @@ public class UseShopUI : MonoBehaviour
             player.GetComponent<PlayerStats>().UpdateTotalGold(-itemData.itemPrice);
 
             Debug.Log("Item bought: " + itemData.itemName);
+            ShowMessage("Bought: " + itemData.itemName + "!");
             return true;
         }
 
         Debug.Log("Too Poor for: " + itemData.itemName);
+        ShowMessage("Not enough gold!");
         return false;
     }
 
@@ -123,5 +131,24 @@ public class UseShopUI : MonoBehaviour
     {
         GunManager.bonusDamage += 2f;
         Debug.Log("Bonus DMG: " + GunManager.bonusDamage);
+    }
+
+    void ShowMessage(String message)
+    {
+        if (shopMessageText == null) return;
+        StopAllCoroutines();
+        StartCoroutine(ShowMessageRoutine(message));
+    }
+
+    IEnumerator ShowMessageRoutine(string message)
+    {
+        shopMessageText.text = message;
+        yield return new WaitForSecondsRealtime(2f);
+        shopMessageText.text = "";
+    }
+
+    void OnDisable()
+    {
+        if (shopMessageText != null) shopMessageText.text = "";
     }
 }
