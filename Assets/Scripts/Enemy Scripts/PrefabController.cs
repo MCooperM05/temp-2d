@@ -14,11 +14,22 @@ public class PrefabController : MonoBehaviour
     public void Initialize(PlayerStats playerScene, Slider healthBarScene)
     {
         player = playerScene;
-        healthBar = healthBar;
+        healthBar = healthBarScene;
         Vector3 spawnPosition = new Vector3(5f, 0f, 0f);
-        GameObject boss = fishBossPrefab;
-        boss.GetComponent<BossHealth>().healthBar = healthBarScene;
-        boss.GetComponent<BossHealth>().playerStats = playerScene;
-        Instantiate(boss, spawnPosition, Quaternion.identity);
+        GameObject boss = Instantiate(fishBossPrefab, spawnPosition, Quaternion.identity);
+        BossHealth bossHealth = boss.GetComponent<BossHealth>();
+        if (bossHealth != null) {
+            
+            bossHealth.healthBar = healthBarScene;
+            bossHealth.playerStats = player;
+            
+            if (healthBarScene != null) {
+                healthBarScene.gameObject.SetActive(true);
+                healthBarScene.value = 20f / 10f;
+            }
+        }
+        else {
+            Debug.Log("BossHealth component not found on boss prefab.");
+        }
     }
 }

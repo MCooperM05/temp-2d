@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class BossHealth : MonoBehaviour
 {
-    [SerializeField] public static float health = 20f;
+    [SerializeField] public float health = 20f;
     [SerializeField] public Material damageMaterial;
     [SerializeField] public Material defaultMaterial;
 
@@ -17,9 +17,12 @@ public class BossHealth : MonoBehaviour
 
     void Awake()
     {
+        if (healthBar != null)
+    {
         healthBar.gameObject.SetActive(true);
         healthBar.value = health / 10f;
-        Debug.Log("Enemy Health: " + health);
+    }
+    Debug.Log("Enemy Health: " + health);
     }
 
     public void TakeDamage(float damage)
