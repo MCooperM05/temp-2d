@@ -6,6 +6,10 @@ public class KeyManager : MonoBehaviour
 {
     [SerializeField] public int keyValue = 1;
 
+    void Awake (){
+        
+    }
+
     void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Player"))
