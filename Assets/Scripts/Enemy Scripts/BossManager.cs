@@ -28,10 +28,15 @@ public class BossManager : MonoBehaviour
         GameObject boss = GameObject.FindGameObjectWithTag("Boss");
         keys = PlayerStats.totalKeys;
 
-        if (boss == null && keys != 1)
+        if (boss == null && (keys != 1 && (playerStats.maxHealth <= 3f)))
         {
             SpawnBoss();
             return;
+        } else if (boss == null){
+            for (int i = 0; i < diveStations.Length; i++)
+            {
+                diveStations[i].SetActive(true);
+            }
         }
         if (boss != null && boss.GetComponent<BossHealth>().health <= 0)
         {
