@@ -552,7 +552,6 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
-<<<<<<< Updated upstream
 --- !u!1 &481490164
 GameObject:
   m_ObjectHideFlags: 0
@@ -769,8 +768,6 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1, y: 0.46470904}
   m_EdgeRadius: 0
-=======
->>>>>>> Stashed changes
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -1010,8 +1007,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-<<<<<<< Updated upstream
-=======
 --- !u!1 &794033418
 GameObject:
   m_ObjectHideFlags: 0
@@ -1313,7 +1308,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a89c2288410a6f54096a291bdcc9c1f6, type: 3}
->>>>>>> Stashed changes
 --- !u!1 &969923846
 GameObject:
   m_ObjectHideFlags: 0
@@ -2751,27 +2745,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-<<<<<<< Updated upstream
---- !u!1 &2049724535
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 2049724536}
-  - component: {fileID: 2049724538}
-  - component: {fileID: 2049724537}
-  m_Layer: 0
-  m_Name: Wall (11)
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
-=======
->>>>>>> Stashed changes
 --- !u!4 &2049724536
 Transform:
   m_ObjectHideFlags: 0
@@ -3448,9 +3421,8 @@ SceneRoots:
   - {fileID: 1427984678}
   - {fileID: 1057149824}
   - {fileID: 1627490731}
-<<<<<<< Updated upstream
   - {fileID: 2072702655}
   - {fileID: 481490167}
-=======
   - {fileID: 794033423}
->>>>>>> Stashed changes
+  - {fileID: 494904222}
+  - {fileID: 915900146}
