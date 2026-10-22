@@ -14,21 +14,32 @@ public class BossHealth : MonoBehaviour
     [SerializeField] public GameObject keyPrefab;
 
     [SerializeField] public PlayerStats playerStats;
+    float maxHealth;
 
     void Awake()
     {
-        if (healthBar != null)
-    {
-        healthBar.gameObject.SetActive(true);
-        healthBar.value = health / 10f;
+        maxHealth = health;
+        Debug.Log("Enemy Health: " + health);
     }
-    Debug.Log("Enemy Health: " + health);
+
+    void Start()
+    {
+        if (healthBar != null)
+        {
+            healthBar.gameObject.SetActive(true);
+            // healthBar.value = health / 10f;
+            healthBar.maxValue = 1f;
+            healthBar.value = 1f;
+        }
     }
 
     public void TakeDamage(float damage)
     {
+        if (health <= 0) return;
+
         health -= damage;
-        healthBar.value = health / 10f;
+        // healthBar.value = health / 10f;
+        healthBar.value = health / maxHealth;
         Debug.Log("Enemy Health: " + health);
         if (health <= 0f)
         {
@@ -52,6 +63,8 @@ public class BossHealth : MonoBehaviour
         DisableEnemy();
         healthBar.value = health;
         healthBar.gameObject.SetActive(false);
+
+        FindFirstObjectByType<BossManager>().BossDefeated();
     }
 
     void DisableEnemy()
