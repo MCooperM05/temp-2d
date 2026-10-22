@@ -39,11 +39,11 @@ public class PlayerStats : MonoBehaviour
         UpdateTotalGold(0f);
         UpdateTotalKeys(0);
        
-        if (gameObject.scene.name == "WorldHub") // reset keys so the player cannot save up keys
-        {
-            totalKeys = 0;
-            keysVisual.SetActive(false);
-        }
+        // if (gameObject.scene.name == "WorldHub") // reset keys so the player cannot save up keys
+        // {
+        //     totalKeys = 0;
+        //     keysVisual.SetActive(false);
+        // }
 
         deathScreen.SetActive(false);
         pauseScreen.SetActive(false);
