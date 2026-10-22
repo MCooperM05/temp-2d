@@ -4550,7 +4550,6 @@ Transform:
   m_Children:
   - {fileID: 1015200361}
   - {fileID: 1143871807}
-  - {fileID: 1352118444}
   - {fileID: 1208664485}
   m_Father: {fileID: 446632613}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -8089,9 +8088,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 720501030}
-  - {fileID: 1380910707}
   - {fileID: 2075632279}
-  - {fileID: 1340388798}
   m_Father: {fileID: 446632613}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1109903012
@@ -9237,7 +9234,7 @@ SpriteRenderer:
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 1
+  m_SortingOrder: 11
   m_MaskInteraction: 0
   m_Sprite: {fileID: 5783831204225393680, guid: 860d3c3893be44c48ab3cc831338691c, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -9364,6 +9361,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 1848822382665138367, guid: 747656283e22eaa48afba81b8a529482, type: 3}
+      propertyPath: stationID
+      value: OpenOcean
+      objectReference: {fileID: 0}
+    - target: {fileID: 1848822382665138367, guid: 747656283e22eaa48afba81b8a529482, type: 3}
       propertyPath: sceneToLoad
       value: WorldHub
       objectReference: {fileID: 0}
@@ -9371,6 +9372,10 @@ PrefabInstance:
       propertyPath: pressEPrompt
       value: 
       objectReference: {fileID: 1427984679}
+    - target: {fileID: 1848822382665138367, guid: 747656283e22eaa48afba81b8a529482, type: 3}
+      propertyPath: arriveAtStationID
+      value: WorldHub
+      objectReference: {fileID: 0}
     - target: {fileID: 2299643734505816869, guid: 747656283e22eaa48afba81b8a529482, type: 3}
       propertyPath: m_Name
       value: DiveStation (1)
@@ -9900,63 +9905,6 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
---- !u!1001 &1389993881
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 6684930559319582019, guid: d98fd12d9b21591408fe0ba2136cf39c, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -9.56
-      objectReference: {fileID: 0}
-    - target: {fileID: 6684930559319582019, guid: d98fd12d9b21591408fe0ba2136cf39c, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -0.24
-      objectReference: {fileID: 0}
-    - target: {fileID: 6684930559319582019, guid: d98fd12d9b21591408fe0ba2136cf39c, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6684930559319582019, guid: d98fd12d9b21591408fe0ba2136cf39c, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6684930559319582019, guid: d98fd12d9b21591408fe0ba2136cf39c, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6684930559319582019, guid: d98fd12d9b21591408fe0ba2136cf39c, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6684930559319582019, guid: d98fd12d9b21591408fe0ba2136cf39c, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6684930559319582019, guid: d98fd12d9b21591408fe0ba2136cf39c, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6684930559319582019, guid: d98fd12d9b21591408fe0ba2136cf39c, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6684930559319582019, guid: d98fd12d9b21591408fe0ba2136cf39c, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8504173461751882848, guid: d98fd12d9b21591408fe0ba2136cf39c, type: 3}
-      propertyPath: m_Name
-      value: Key
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: d98fd12d9b21591408fe0ba2136cf39c, type: 3}
 --- !u!1 &1394703167
 GameObject:
   m_ObjectHideFlags: 0
@@ -10552,7 +10500,6 @@ Transform:
   m_Children:
   - {fileID: 1669131039}
   - {fileID: 607875562}
-  - {fileID: 1325617588}
   - {fileID: 1115992877}
   - {fileID: 2022906252}
   - {fileID: 404129966}
@@ -14913,7 +14860,6 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1249855824}
-  - {fileID: 1327900266}
   - {fileID: 199364052}
   - {fileID: 1770662005}
   - {fileID: 1519123193}
@@ -15841,6 +15787,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 1848822382665138367, guid: 747656283e22eaa48afba81b8a529482, type: 3}
+      propertyPath: stationID
+      value: BossEnter
+      objectReference: {fileID: 0}
+    - target: {fileID: 1848822382665138367, guid: 747656283e22eaa48afba81b8a529482, type: 3}
       propertyPath: sceneToLoad
       value: prototype-boss-fight
       objectReference: {fileID: 0}
@@ -15848,6 +15798,10 @@ PrefabInstance:
       propertyPath: pressEPrompt
       value: 
       objectReference: {fileID: 1427984679}
+    - target: {fileID: 1848822382665138367, guid: 747656283e22eaa48afba81b8a529482, type: 3}
+      propertyPath: arriveAtStationID
+      value: BossRoom
+      objectReference: {fileID: 0}
     - target: {fileID: 2299643734505816869, guid: 747656283e22eaa48afba81b8a529482, type: 3}
       propertyPath: m_Name
       value: DiveStation

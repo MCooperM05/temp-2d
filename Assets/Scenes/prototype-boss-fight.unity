@@ -611,7 +611,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DivingStation
   sceneToLoad: prototype-explore-ocean
+  stationID: BossRoom
+  arriveAtStationID: BossEnter
+  spawnPoint: {fileID: 0}
+  keysRequired: 0
+  useUpKeys: 0
+  diveDamage: 0
   pressEPrompt: {fileID: 1109170304890369573}
+  lockedPrompt: {fileID: 0}
 --- !u!61 &794528579
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -967,7 +974,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DivingStation
   sceneToLoad: Credits
+  stationID: Credits
+  arriveAtStationID: 
+  spawnPoint: {fileID: 0}
+  keysRequired: 0
+  useUpKeys: 0
+  diveDamage: 0
   pressEPrompt: {fileID: 1109170304890369573}
+  lockedPrompt: {fileID: 0}
 --- !u!61 &1158516904
 BoxCollider2D:
   m_ObjectHideFlags: 0

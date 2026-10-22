@@ -12,6 +12,8 @@ public class CameraFollow : MonoBehaviour
 
     Camera cam;
 
+    bool firstFrame = true;
+
     void Start()
     {
         cam = GetComponent<Camera>();
@@ -31,6 +33,11 @@ public class CameraFollow : MonoBehaviour
 
         Vector3 goal = new Vector3(target.position.x + offset.x, target.position.y + offset.y, transform.position.z);
         Vector3 newPos = Vector3.Lerp(transform.position, goal, smoothSpeed * Time.deltaTime);
+        if (firstFrame)
+        {
+            newPos = goal;
+            firstFrame = false;
+        }
 
         if (mapBottomLeft != null & mapTopRight != null)
         {
