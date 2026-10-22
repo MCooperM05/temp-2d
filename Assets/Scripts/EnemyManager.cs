@@ -5,14 +5,25 @@ public class EnemyManager : MonoBehaviour
     [SerializeField] public GameObject crabPrefab;
     [SerializeField] public PlayerStats playerStats;
     private int totalEnemies;
+    private Vector3 spawnPosition;
 
     void Update()
     {
         GameObject[] enemies = GameObject.FindGameObjectsWithTag("LittleEnemy");
         totalEnemies = enemies.Length;
+        float timeInScene = Time.timeSinceLevelLoad;
+        float rand = Random.value;
 
-        if (totalEnemies < 2) {
-            Vector3 spawnPosition = new Vector3(3f, -2f, 0f);
+        if (totalEnemies < 1f + (timeInScene / 2f)) { 
+            if (rand > 0.75f){
+                spawnPosition = new Vector3(9.44f, -11.38f, 0f);
+            } else if (rand > 0.5f){
+                spawnPosition = new Vector3(12.14f, -17.92f, 0f);
+            } else if (rand > 0.25f) {
+                spawnPosition = new Vector3(-10.82f, -21.27f, 0f);
+            } else {
+                spawnPosition = new Vector3(8.75f, -21.43f, 0f);
+            }
             GameObject crab = Instantiate(crabPrefab, spawnPosition, Quaternion.identity);
             EnemyHealth enemyHealth = crab.GetComponent<EnemyHealth>();
             enemyHealth.playerStats = FindFirstObjectByType<PlayerStats>();
