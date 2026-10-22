@@ -9,10 +9,9 @@ public class BossHealth : MonoBehaviour
     [SerializeField] public static float health = 20f;
     [SerializeField] public Material damageMaterial;
     [SerializeField] public Material defaultMaterial;
-    [SerializeField] public float goldAmount = 10f;
 
     [SerializeField] public Slider healthBar;
-    [SerializeField] public GameObject goldPrefab;
+    [SerializeField] public GameObject keyPrefab;
 
     [SerializeField] public PlayerStats playerStats;
 
@@ -27,10 +26,10 @@ public class BossHealth : MonoBehaviour
     {
         health -= damage;
         healthBar.value = health / 10f;
-
+        Debug.Log("Enemy Health: " + health);
         if (health <= 0f)
         {
-            GiveGold();
+            GiveKey();
         }
 
         StartCoroutine(FlashDamageMaterial());
@@ -43,18 +42,13 @@ public class BossHealth : MonoBehaviour
         GetComponent<Renderer>().material = defaultMaterial;
     }
 
-    void GiveGold()
+    void GiveKey()
     {
-        GameObject gold = Instantiate(goldPrefab, transform.position, Quaternion.identity);
-        gold.GetComponent<GoldManager>().SetGoldAmount(goldAmount);
+        Instantiate(keyPrefab, transform.position, Quaternion.identity);
+       
         DisableEnemy();
-        gold.GetComponent<GoldManager>().FadeGold();
-        
-        playerStats.UpdateTotalGold(goldAmount);
-
+        healthBar.value = health;
         healthBar.gameObject.SetActive(false);
-
-        Destroy(gameObject);
     }
 
     void DisableEnemy()

@@ -8,16 +8,20 @@ public class EnemyMovement : MonoBehaviour
 {
     [Header("Movement Settings")]
     [SerializeField] private float moveSpeed = 1.5f;
-    [SerializeField] private Rigidbody2D enemyRb;
+    [SerializeField] private Rigidbody2D rb;
 
-    [Header ("Damage Settings")]
-    [SerializeField] private float damage;
-    [SerializeField] private GameObject attackCollider;
+    [Header("Melee Settings")]
+    [SerializeField] private bool isMelee = true; // if the enemy does melee damage
+    [SerializeField] private GameObject meleeObj;
+    [SerializeField] private float attackCooldown = 1f;
+    private bool isAttacking = false;
+    private bool canAttack = true; // helps with attack cooldown
+
+    [Header("References")]
+    [SerializeField] private Animator anim;
     
     private GameObject player;
     private Transform playerTransform;
-    private bool isAttacking = false;
-    // private Vector2 currentMovement;
     public float smoothTime = 0.3f;
     private Vector3 velocity = new Vector3(0,0,0);
 
@@ -29,18 +33,33 @@ public class EnemyMovement : MonoBehaviour
             player = GameObject.FindGameObjectWithTag("Player");
             if (player != null) Debug.Log("Player found");
         }
+        playerTransform = player.transform;
+        rb = GetComponent<Rigidbody2D>();
     }
 
     void Update()
     {
-        HandleRotation();
-        HandleMovement();
+        if (!isAttacking) HandleRotation();
+        if (isAttacking && isMelee && canAttack)
+        {
+            canAttack = false;
+            HandleAttack();
+        }
+    }
+
+    void FixedUpdate()
+    {
+        if (!isAttacking) HandleMovement();
+    }
+
+    public void HandleMovement() // Handle enemy movement
+    {
+        Vector2 direction = ((Vector2)playerTransform.position - rb.position).normalized;
+        rb.linearVelocity = direction * moveSpeed;
     }
 
     public void HandleRotation()
     {
-        playerTransform = player.transform;
-
         Vector3 targ = playerTransform.position;
         targ.z = 0f;
 
@@ -52,23 +71,48 @@ public class EnemyMovement : MonoBehaviour
         transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle - 90));
     }
 
-    public void HandleMovement()
+    void OnCollisionStay2D(Collision2D collision)
     {
-        transform.position = Vector3.SmoothDamp(
-        transform.position,
-        playerTransform.position,
-        ref velocity,
-        smoothTime * moveSpeed
-        );
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            isAttacking = true;
+        }
     }
 
-    public void AttackEnable()
+    void OnCollisionExit2D(Collision2D collision)
     {
-        attackCollider.SetActive(true);
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            isAttacking = false;
+        }
     }
 
-    public void AttackDisable()
+    public void HandleAttack()
     {
-        attackCollider.SetActive(false);
+        anim.SetBool("Attack", true);
+        StartCoroutine(UseAttack());
+    }
+
+    IEnumerator UseAttack()
+    {
+        yield return new WaitForSeconds(anim.GetCurrentAnimatorStateInfo(0).length);
+        anim.SetBool("Attack", false);
+        StartCoroutine(AttackCooldown());
+    }
+
+    IEnumerator AttackCooldown() // canAttack set to true so the enemy can attack again
+    {
+        yield return new WaitForSeconds(attackCooldown);
+        canAttack = true;
+    }
+
+    public void EnableAttack()
+    {
+        meleeObj.SetActive(true);
+    }
+
+    public void DisableAttack()
+    {
+        meleeObj.SetActive(false);
     }
 }

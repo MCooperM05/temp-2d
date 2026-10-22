@@ -11,25 +11,26 @@ public class EnemyHealth : MonoBehaviour
     [SerializeField] public Material defaultMaterial;
     [SerializeField] public float goldAmount = 10f;
 
-    [SerializeField] public Slider healthBar;
+    // [SerializeField] public Slider healthBar;
     [SerializeField] public GameObject goldPrefab;
 
     [SerializeField] public PlayerStats playerStats;
 
     void Awake()
     {
-        healthBar.gameObject.SetActive(true);
-        healthBar.value = health / 10f;
+        // healthBar.gameObject.SetActive(true);
+        // healthBar.value = health / 10f;
         Debug.Log("Enemy Health: " + health);
     }
 
     public void TakeDamage(float damage)
     {
         health -= damage;
-        healthBar.value = health / 10f;
+        // healthBar.value = health / 10f;
 
         if (health <= 0f)
         {
+            DisableEnemy();
             GiveGold();
         }
 
@@ -47,21 +48,21 @@ public class EnemyHealth : MonoBehaviour
     {
         GameObject gold = Instantiate(goldPrefab, transform.position, Quaternion.identity);
         gold.GetComponent<GoldManager>().SetGoldAmount(goldAmount);
-        DisableEnemy();
         gold.GetComponent<GoldManager>().FadeGold();
         
         playerStats.UpdateTotalGold(goldAmount);
 
-        healthBar.gameObject.SetActive(false);
+        // healthBar.gameObject.SetActive(false);
 
         Destroy(gameObject);
     }
 
     void DisableEnemy()
     {
-        GetComponent<EnemyAI>().enabled = false;
-        GetComponent<BossAI>().enabled = false;
+        // GetComponent<EnemyAI>().enabled = false;
+        // GetComponent<BossAI>().enabled = false;
         GetComponent<Collider2D>().enabled = false;
         GetComponent<SpriteRenderer>().enabled = false;
+        GetComponent<EnemyMovement>().enabled = false;
     }
 }
