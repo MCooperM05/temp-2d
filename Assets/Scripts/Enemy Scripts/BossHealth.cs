@@ -47,6 +47,7 @@ public class BossHealth : MonoBehaviour
         Instantiate(keyPrefab, transform.position, Quaternion.identity);
        
         DisableEnemy();
+        healthBar.value = health;
         healthBar.gameObject.SetActive(false);
     }
 

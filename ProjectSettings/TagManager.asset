@@ -7,7 +7,7 @@ TagManager:
   - Enemy
   - Wall
   - Boss
-  - LittleEnemy
+  - healthBar
   layers:
   - Default
   - TransparentFX
