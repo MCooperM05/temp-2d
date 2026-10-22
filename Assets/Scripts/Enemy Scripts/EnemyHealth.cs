@@ -11,6 +11,8 @@ public class EnemyHealth : MonoBehaviour
     [SerializeField] public Material defaultMaterial;
     [SerializeField] public float goldAmount = 10f;
 
+    [SerializeField] private AudioSource audioSource;
+
     // [SerializeField] public Slider healthBar;
     [SerializeField] public GameObject goldPrefab;
     [SerializeField] public GameObject bubbleObj;
@@ -79,5 +81,10 @@ public class EnemyHealth : MonoBehaviour
         bubbleObj.SetActive(false);
 
         GiveGold();
+    }
+
+    public void PlayPop()
+    {
+        audioSource.Play();
     }
 }

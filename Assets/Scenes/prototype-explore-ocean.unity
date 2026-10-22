@@ -303,6 +303,7 @@ MonoBehaviour:
   damageMaterial: {fileID: 2100000, guid: bf42df48a74d353478aa08b5378989cf, type: 2}
   defaultMaterial: {fileID: 2100000, guid: cf20dbf0fee94714f9c97d9e3a824b74, type: 2}
   goldAmount: 10
+  audioSource: {fileID: 0}
   goldPrefab: {fileID: 3445211244488667706, guid: e4de2c8aefaa06947a7b88ec65fc2a45, type: 3}
   bubbleObj: {fileID: 0}
   anim: {fileID: 0}
@@ -3751,11 +3752,6 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
---- !u!1 &420661825 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2892235799174583512, guid: 2ba6157dfb067e44e9b506aa4e57ec9e, type: 3}
-  m_PrefabInstance: {fileID: 8519854909303389811}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &421519833
 GameObject:
   m_ObjectHideFlags: 0
@@ -20068,9 +20064,9 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
---- !u!95 &2087240335 stripped
-Animator:
-  m_CorrespondingSourceObject: {fileID: 6573585734968325166, guid: 2ba6157dfb067e44e9b506aa4e57ec9e, type: 3}
+--- !u!82 &2087240342 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 2831952207244019503, guid: 2ba6157dfb067e44e9b506aa4e57ec9e, type: 3}
   m_PrefabInstance: {fileID: 8519854909303389811}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &2088146464
@@ -21231,13 +21227,9 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7572431278489979528, guid: 2ba6157dfb067e44e9b506aa4e57ec9e, type: 3}
-      propertyPath: anim
+      propertyPath: audioSource
       value: 
-      objectReference: {fileID: 2087240335}
-    - target: {fileID: 7572431278489979528, guid: 2ba6157dfb067e44e9b506aa4e57ec9e, type: 3}
-      propertyPath: bubbleObj
-      value: 
-      objectReference: {fileID: 420661825}
+      objectReference: {fileID: 2087240342}
     - target: {fileID: 7572431278489979528, guid: 2ba6157dfb067e44e9b506aa4e57ec9e, type: 3}
       propertyPath: playerStats
       value: 
