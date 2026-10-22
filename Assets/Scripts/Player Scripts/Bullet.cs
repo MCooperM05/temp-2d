@@ -20,7 +20,7 @@ public class Bullet : MonoBehaviour
     void OnTriggerEnter2D(Collider2D other)
     {
         Debug.Log("Bullet hit");
-        if (other.CompareTag("Enemy"))
+        if (other.CompareTag("Enemy") || other.CompareTag("LittleEnemy"))
         {
             other.GetComponent<EnemyHealth>().TakeDamage(damage);
             Destroy(gameObject);
