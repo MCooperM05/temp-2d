@@ -41,13 +41,11 @@ public class BossManager : MonoBehaviour
 
         if (boss == null && (keys != 1 && (playerStats.maxHealth <= 3f)))
         {
+            StartCoroutine(BossCutscene());
             SpawnBoss();
             return;
         } else if (boss == null){
-            for (int i = 0; i < diveStations.Length; i++)
-            {
-                diveStations[i].SetActive(true);
-            }
+            BossDefeated();
         }
         if (boss != null && boss.GetComponent<BossHealth>().health <= 0)
         {
@@ -80,6 +78,11 @@ public class BossManager : MonoBehaviour
 
         bossBeaten = true;
         Debug.Log("Boss Defeated");
+    }
+
+    IEnumerator BossCutscene() {
+        yield return new WaitForSeconds(3f);
+        // Text to add "Something is coming. Prepare yourself!"
     }
 
     // IEnumerator BackToScene()
