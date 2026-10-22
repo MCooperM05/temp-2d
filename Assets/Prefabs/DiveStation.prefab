@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 7839847773161348490}
   - component: {fileID: 2874005934164560098}
   - component: {fileID: 980606877596015606}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -254,4 +254,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DivingStation
   sceneToLoad: prototype-explore-ocean
+  stationID: 
+  arriveAtStationID: 
+  spawnPoint: {fileID: 0}
+  keysRequired: 0
+  useUpKeys: 0
+  diveDamage: 0
   pressEPrompt: {fileID: 0}
+  lockedPrompt: {fileID: 0}

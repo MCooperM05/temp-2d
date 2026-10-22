@@ -18,6 +18,7 @@ public class PlayerStats : MonoBehaviour
     static public int totalKeys = 0;
     public static float savedHealth = 3f;
     public static float savedMaxHealth = 3f;
+    private bool invincible = false;
 
     [SerializeField] public TMP_Text playerGoldAmount;
 
@@ -54,7 +55,7 @@ public class PlayerStats : MonoBehaviour
     public void TakeDamage(float damage)
     {
         if (health <= 0f) return;
-
+        if (invincible == true) return;
         health -= damage;
 
         if (health < 0f) health = 0f;
@@ -81,9 +82,11 @@ public class PlayerStats : MonoBehaviour
 
     IEnumerator FlashDamageMaterial()
     {
+        invincible = true;
         GetComponent<Renderer>().material = damageMaterial;
         yield return new WaitForSeconds(0.2f);
         GetComponent<Renderer>().material = defaultMaterial;
+        invincible = false;
     }
 
     void OnCollisionEnter2D(Collision2D collision)
