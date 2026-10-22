@@ -26,7 +26,6 @@ public class PlayerStats : MonoBehaviour
 
     [SerializeField] public GameObject deathScreen;
     [SerializeField] public GameObject pauseScreen;
-
     void Awake()
     {
         maxHealth = savedMaxHealth;
