@@ -17,15 +17,18 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/WorldHub.unity
     guid: 17afc1d8116f08c41893e4f784c88243
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/prototype-shop.unity
     guid: 54983a9d5cd7d4743a8625056dfe9a21
+  - enabled: 1
+    path: Assets/Scenes/prototype-explore-ocean.unity
+    guid: 71615cebfb06aa9469e1b828978bea6a
   - enabled: 1
     path: Assets/Scenes/prototype-boss-fight.unity
     guid: aad3b72bdb27aa34eb26ef691579f743
   - enabled: 1
-    path: Assets/Scenes/prototype-explore-ocean.unity
-    guid: 71615cebfb06aa9469e1b828978bea6a
+    path: Assets/Scenes/Credits.unity
+    guid: aab217ad94cd6b74d81fff885fdb0fed
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
   m_UseUCBPForAssetBundles: 0

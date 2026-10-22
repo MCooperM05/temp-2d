@@ -15,14 +15,15 @@ public class BossManager : MonoBehaviour
     
     [SerializeField] public GameObject fishBossPrefab;
     [SerializeField] public PlayerStats playerStats;
+    public GameObject[] diveStations;
 
     public int keys;
 
     void Update()
     {
-        GameObject Boss = GameObject.FindGameObjectWithTag("Boss");
+        GameObject boss = GameObject.FindGameObjectWithTag("Boss");
         keys = PlayerStats.totalKeys;
-        if (Boss == null && keys != 1)
+        if (boss == null && keys != 1)
         {
             PlayerStats player = FindFirstObjectByType<PlayerStats>();
             GameObject sliderObj = GameObject.FindGameObjectWithTag("healthBar");
@@ -33,11 +34,18 @@ public class BossManager : MonoBehaviour
             PrefabController newInstance = Instantiate(prefabToSpawn);
             newInstance.Initialize(player, hpBar);
         }
+        if (boss.GetComponent <BossHealth>().health == 0)
+        {
+            for (int i = 0; i < diveStations.Length; i++)
+        {
+            diveStations[i].SetActive(true);
+        }
+        }
     }
 
-    IEnumerator BackToScene()
-    {
-        yield return new WaitForSeconds(3f);
-        SceneManager.LoadScene(sceneName);
-    }
+    // IEnumerator BackToScene()
+    // {
+    //     yield return new WaitForSeconds(3f);
+    //     SceneManager.LoadScene(sceneName);
+    // }
 }
