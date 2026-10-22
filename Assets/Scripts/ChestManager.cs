@@ -6,6 +6,7 @@ using UnityEngine.InputSystem;
 using System.Runtime.CompilerServices;
 using UnityEngine.InputSystem.Controls;
 using NUnit.Framework;
+using System.Collections.Generic;
 
 public class ChestManager : MonoBehaviour
 {
@@ -25,10 +26,12 @@ public class ChestManager : MonoBehaviour
     private bool isInteractable = false;
     private GameObject player;
 
-    public static bool hasLooted = false;
+    public static List<string> lootedChests = new List<string>();
+    private string chestID;
 
     void Start()
     {
+        chestID = gameObject.scene.name + "_" + gameObject.name;
         if (requiredKeyAmount == 1) // change text based on required amount of keys
         {
             lockedText.text = "Need " + requiredKeyAmount + " key to unlock.";
@@ -37,16 +40,20 @@ public class ChestManager : MonoBehaviour
             lockedText.text = "Needs " + requiredKeyAmount + " keys to unlock.";
         }
 
+        lootedText.text = "Already looted.";
+        lockedPrompt.SetActive(false);
+        lootedPrompt.SetActive(false);
+
         player = GameObject.FindGameObjectWithTag("Player"); // find the player at the start for later use
         if (player != null)
         {
             Debug.Log("Player found!");
         }
 
-        if (hasLooted)
+        if (lootedChests.Contains(chestID))
         {
             gameObject.GetComponent<SpriteRenderer>().sprite = openedChestSprite;
-            lootedText.text = "Already looted.";
+            isOpened = true;
         }
     }
 
@@ -68,42 +75,75 @@ public class ChestManager : MonoBehaviour
 
     void Update()
     {
-        keys = PlayerStats.totalKeys;
-        if (keys >= requiredKeyAmount)
-        {
-            isUnlockable = true;
-        }
+        if (Time.timeScale == 0f) return;
+        if (!isInteractable) return;
+        if (!Keyboard.current.eKey.wasPressedThisFrame) return;
 
-        if (!isOpened && isUnlockable && isInteractable && Keyboard.current.eKey.wasPressedThisFrame) // subtract key amount from player
+        if (isOpened)
         {
+            ShowPrompt(lootedPrompt);
+        } else if (PlayerStats.totalKeys >= requiredKeyAmount){
             gameObject.GetComponent<SpriteRenderer>().sprite = openedChestSprite;
             player.GetComponent<PlayerStats>().UpdateTotalKeys(-requiredKeyAmount);
             giveExtraHealth();
             isOpened = true; // chest has been opened and cannot be messed with
-            hasLooted = true;
-        } else if (!isOpened && !isUnlockable && isInteractable && Keyboard.current.eKey.wasPressedThisFrame) // show amount of keys needed to unlock
+            lootedChests.Add(chestID);
+        } else
         {
-            StartCoroutine(ShowLockedText());
+            ShowPrompt(lockedPrompt);
         }
-        else if (hasLooted && isInteractable && Keyboard.current.eKey.wasPressedThisFrame)
-        {
-            StartCoroutine(ShowLootedText());
-        }
+
+        // keys = PlayerStats.totalKeys;
+        // if (keys >= requiredKeyAmount)
+        // {
+        //     isUnlockable = true;
+        // }
+
+        // if (!isOpened && isUnlockable && isInteractable && Keyboard.current.eKey.wasPressedThisFrame) // subtract key amount from player
+        // {
+        //     gameObject.GetComponent<SpriteRenderer>().sprite = openedChestSprite;
+        //     player.GetComponent<PlayerStats>().UpdateTotalKeys(-requiredKeyAmount);
+        //     giveExtraHealth();
+        //     isOpened = true; // chest has been opened and cannot be messed with
+        //     hasLooted = true;
+        // } else if (!isOpened && !isUnlockable && isInteractable && Keyboard.current.eKey.wasPressedThisFrame) // show amount of keys needed to unlock
+        // {
+        //     StartCoroutine(ShowLockedText());
+        // }
+        // else if (hasLooted && isInteractable && Keyboard.current.eKey.wasPressedThisFrame)
+        // {
+        //     StartCoroutine(ShowLootedText());
+        // }
     }
 
-    IEnumerator ShowLockedText()
+    void ShowPrompt(GameObject prompt)
     {
-        lockedPrompt.SetActive(true);
-        yield return new WaitForSeconds(2.5f);
+        StopAllCoroutines();
         lockedPrompt.SetActive(false);
+        lootedPrompt.SetActive(false);
+        StartCoroutine(ShowPromptRoutine(prompt));
     }
 
-    IEnumerator ShowLootedText()
+    IEnumerator ShowPromptRoutine(GameObject prompt)
     {
-        lootedPrompt.SetActive(true);
+        prompt.SetActive(true);
         yield return new WaitForSeconds(2.5f);
-        lootedPrompt.SetActive(false);
+        prompt.SetActive(false);
     }
+
+    // IEnumerator ShowLockedText()
+    // {
+        // lockedPrompt.SetActive(true);
+        // yield return new WaitForSeconds(2.5f);
+        // lockedPrompt.SetActive(false);
+    // }
+
+    // IEnumerator ShowLootedText()
+    // {
+    //     lootedPrompt.SetActive(true);
+    //     yield return new WaitForSeconds(2.5f);
+    //     lootedPrompt.SetActive(false);
+    // }
 
     public void giveExtraHealth()
     {
