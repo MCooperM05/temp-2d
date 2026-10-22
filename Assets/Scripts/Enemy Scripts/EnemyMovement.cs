@@ -7,7 +7,7 @@ using System.Collections.Generic;
 public class EnemyMovement : MonoBehaviour
 {
     [Header("Movement Settings")]
-    [SerializeField] private float moveSpeed = 1.5f;
+    [SerializeField] public float moveSpeed = 1.5f;
     [SerializeField] private Rigidbody2D rb;
 
     [Header("Melee Settings")]
