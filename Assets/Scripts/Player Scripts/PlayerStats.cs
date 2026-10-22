@@ -28,6 +28,8 @@ public class PlayerStats : MonoBehaviour
     [SerializeField] public GameObject pauseScreen;
     void Awake()
     {
+        if(gameObject.scene.name == "WorldHub") savedHealth = savedMaxHealth; 
+
         maxHealth = savedMaxHealth;
         health = Mathf.Min(savedHealth, maxHealth);
     }
@@ -36,7 +38,6 @@ public class PlayerStats : MonoBehaviour
     {
         UpdateTotalGold(0f);
         UpdateTotalKeys(0);
-        if(gameObject.scene.name == "WorldHub") savedHealth = 3f; 
        
         if (gameObject.scene.name == "WorldHub") // reset keys so the player cannot save up keys
         {

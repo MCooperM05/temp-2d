@@ -5,7 +5,7 @@ public class DeathScreen : MonoBehaviour
 {
     public void Respawn() {
         Debug.Log("Respawn");
-        PlayerStats.savedHealth = 3f;
+        PlayerStats.savedHealth = PlayerStats.savedMaxHealth;
         Time.timeScale = 1f; //unfreeze game
         SceneManager.LoadScene("WorldHub"); //reload current scene
     }
