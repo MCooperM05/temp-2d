@@ -25,7 +25,11 @@ public class BossManager : MonoBehaviour
         if (Boss == null && keys != 1)
         {
             PlayerStats player = FindFirstObjectByType<PlayerStats>();
-            Slider hpBar = FindFirstObjectByType<Slider>();
+            GameObject sliderObj = GameObject.FindGameObjectWithTag("healthBar");
+            if (sliderObj == null){
+                Debug.Log("sliderObj is null");
+            } 
+            Slider hpBar = sliderObj.GetComponent<Slider>();
             PrefabController newInstance = Instantiate(prefabToSpawn);
             newInstance.Initialize(player, hpBar);
         }
