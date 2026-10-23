@@ -21,10 +21,23 @@ public class BossManager : MonoBehaviour
     bool bossDefeated = false;
     public static bool bossBeaten = false;
 
+    [Header("Keys")]
+    public static bool keyCollected = false;
+    public GameObject keyPrefab;
+    public Transform keySpawnPoint;
+
     void Start() {
         if (bossBeaten)
         {
             BossDefeated();
+
+            if (!keyCollected && keyPrefab != null)
+            {
+                Vector3 spot = transform.position;
+                if (keySpawnPoint != null) spot = keySpawnPoint.position;
+                GameObject key = Instantiate(keyPrefab, spot, Quaternion.identity);
+                key.GetComponent<KeyManager>().isBossKey = true;
+            }
         }
     }
 

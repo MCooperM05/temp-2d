@@ -34,7 +34,7 @@ public class DivingStation : MonoBehaviour
             lockedPrompt.SetActive(false);
         }
 
-        if (nextArrivalID != "" && nextArrivalID == stationID)
+        if (nextArrivalID != "" && nextArrivalID == stationID && Time.timeSinceLevelLoad < 0.05f)
         {
             PlayerController player = FindFirstObjectByType<PlayerController>();
             if (player != null)

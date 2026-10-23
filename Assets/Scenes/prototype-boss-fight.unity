@@ -1605,7 +1605,7 @@ MonoBehaviour:
   spawnPoint: {fileID: 0}
   keysRequired: 0
   useUpKeys: 0
-  diveDamage: 3
+  diveDamage: 0
   pressEPrompt: {fileID: 1109170304890369573}
   lockedPrompt: {fileID: 0}
 --- !u!61 &1158516904
@@ -2223,6 +2223,8 @@ MonoBehaviour:
   - {fileID: 794528577}
   - {fileID: 1158516902}
   keys: 0
+  keyPrefab: {fileID: 8504173461751882848, guid: d98fd12d9b21591408fe0ba2136cf39c, type: 3}
+  keySpawnPoint: {fileID: 0}
 --- !u!4 &2134270523
 Transform:
   m_ObjectHideFlags: 0

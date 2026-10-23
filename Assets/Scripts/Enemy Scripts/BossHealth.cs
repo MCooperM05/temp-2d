@@ -59,7 +59,8 @@ public class BossHealth : MonoBehaviour
     void GiveKey()
     {
         FindFirstObjectByType<BossManager>().BossDefeated();
-        Instantiate(keyPrefab, transform.position, Quaternion.identity);
+        GameObject key = Instantiate(keyPrefab, transform.position, Quaternion.identity);
+        key.GetComponent<KeyManager>().isBossKey = true;
        
         DisableEnemy();
         healthBar.value = health;
