@@ -247,11 +247,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b2e7ef0e11de67b4d85e145b1ac04ede, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BossHealth
+  health: 20
   damageMaterial: {fileID: 2100000, guid: bf42df48a74d353478aa08b5378989cf, type: 2}
   defaultMaterial: {fileID: 2100000, guid: cf20dbf0fee94714f9c97d9e3a824b74, type: 2}
   healthBar: {fileID: 0}
   keyPrefab: {fileID: 8504173461751882848, guid: d98fd12d9b21591408fe0ba2136cf39c, type: 3}
   playerStats: {fileID: 0}
+  deadBoss: {fileID: -2758404332470222470, guid: f45ae1d0204e95f45a78c8386a90d0fa, type: 3}
+  bonePrefab: {fileID: 2749359409110485408, guid: 5c38ca41eef38414a97a6df6bb852b30, type: 3}
+  boneAmount: 15
+  timeBetweenBones: 0.2
 --- !u!114 &8046371082535524480
 MonoBehaviour:
   m_ObjectHideFlags: 0
