@@ -25,6 +25,7 @@ public class BossManager : MonoBehaviour
     public static bool keyCollected = false;
     public GameObject keyPrefab;
     public Transform keySpawnPoint;
+    private bool spawn = false;
 
     void Start() {
         if (bossBeaten)
@@ -47,16 +48,20 @@ public class BossManager : MonoBehaviour
 
         GameObject boss = GameObject.FindGameObjectWithTag("Boss");
 
-        if (boss == null)
+        if (boss == null && spawn == false)
         {
             StartCoroutine(BossCutscene());
-            SpawnBoss();
+            spawn = true;
             return;
         }
-        if (boss.GetComponent<BossHealth>().health <= 0)
+        if (boss != null)
         {
-            BossDefeated();
-        }
+            if (boss.GetComponent<BossHealth>().health <= 0)
+            {
+               BossDefeated();
+            }           
+        } 
+
     }
 
     void SpawnBoss()
@@ -91,6 +96,7 @@ public class BossManager : MonoBehaviour
     IEnumerator BossCutscene() {
         yield return new WaitForSeconds(3f);
         // Text to add "Something is coming. Prepare yourself!"
+        SpawnBoss();
     }
 
     // IEnumerator BackToScene()
