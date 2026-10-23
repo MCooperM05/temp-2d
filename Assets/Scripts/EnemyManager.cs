@@ -1,9 +1,11 @@
 using UnityEngine;
+using TMPro;
 
 public class EnemyManager : MonoBehaviour
 {
     [SerializeField] public GameObject crabPrefab;
     [SerializeField] public PlayerStats playerStats;
+    [SerializeField] public TextMeshProUGUI difficulty; 
     private int totalEnemies;
     private Vector3 spawnPosition;
 
@@ -14,7 +16,8 @@ public class EnemyManager : MonoBehaviour
         float timeInScene = Time.timeSinceLevelLoad;
         float rand = Random.value;
 
-        if (totalEnemies < 1f + (timeInScene / 2f)) { 
+        difficulty.text = "Difficulty: " + (1 +(int)Mathf.Floor((timeInScene / 5f)));
+        if (totalEnemies < 1f + (timeInScene / 5f)) { 
             if (rand > 0.75f){
                 spawnPosition = new Vector3(9.44f, -11.38f, 0f);
             } else if (rand > 0.5f){

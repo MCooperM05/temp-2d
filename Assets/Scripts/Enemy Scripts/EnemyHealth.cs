@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class EnemyHealth : MonoBehaviour
 {
-    [SerializeField] public static float health = 10f;
+    [SerializeField] public float health = 10f;
     [SerializeField] public Material damageMaterial;
     [SerializeField] public Material defaultMaterial;
     [SerializeField] public float goldAmount = 10f;

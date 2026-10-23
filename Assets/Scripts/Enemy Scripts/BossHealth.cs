@@ -72,13 +72,22 @@ public class BossHealth : MonoBehaviour
         healthBar.gameObject.SetActive(false);
     }
 
-    void DisableEnemy()
+    public void DisableEnemy()
     {
         GetComponent<BossAI>().enabled = false;
         GetComponent<BossMovement>().enabled = false;
         GetComponent<Collider2D>().enabled = false;
-        GetComponent<Rigidbody2D>().linearVelocity = Vector2.zero;
-        // GetComponent<SpriteRenderer>().enabled = false;
+        GetComponent<Rigidbody2D>().simulated = false;
+        //GetComponent<SpriteRenderer>().enabled = false;
+    }
+
+    public void EnableEnemy()
+    {
+        GetComponent<BossAI>().enabled = true;
+        GetComponent<BossMovement>().enabled = true;
+        GetComponent<Collider2D>().enabled = true;
+        GetComponent<Rigidbody2D>().simulated = true;
+        GetComponent<SpriteRenderer>().enabled = true;
     }
 
     public void PlayBossDeath()

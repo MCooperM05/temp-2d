@@ -94,9 +94,13 @@ public class BossManager : MonoBehaviour
     }
 
     IEnumerator BossCutscene() {
+        SpawnBoss();
+        GameObject boss = GameObject.FindGameObjectWithTag("Boss");
+        boss.GetComponent<BossHealth>().DisableEnemy();
+        boss.GetComponent<SpriteRenderer>().enabled = false;
         yield return new WaitForSeconds(3f);
         // Text to add "Something is coming. Prepare yourself!"
-        SpawnBoss();
+        boss.GetComponent<BossHealth>().EnableEnemy();
     }
 
     // IEnumerator BackToScene()
