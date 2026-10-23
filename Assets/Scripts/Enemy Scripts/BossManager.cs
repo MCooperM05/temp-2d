@@ -10,7 +10,6 @@ public class BossManager : MonoBehaviour
 {
     [SerializeField] public PrefabController prefabToSpawn;
 
-    
     [SerializeField] public string sceneName = "prototype-explore-ocean";
     
     [SerializeField] public GameObject fishBossPrefab;
@@ -26,9 +25,6 @@ public class BossManager : MonoBehaviour
         if (bossBeaten)
         {
             BossDefeated();
-
-            GameObject bar = GameObject.FindGameObjectWithTag("healthBar");
-            if (bar != null) bar.SetActive(false);
         }
     }
 
@@ -37,17 +33,14 @@ public class BossManager : MonoBehaviour
         if (bossDefeated) return;
 
         GameObject boss = GameObject.FindGameObjectWithTag("Boss");
-        keys = PlayerStats.totalKeys;
 
-        if (boss == null && (keys != 1 && (playerStats.maxHealth <= 3f)))
+        if (boss == null)
         {
             StartCoroutine(BossCutscene());
             SpawnBoss();
             return;
-        } else if (boss == null){
-            BossDefeated();
         }
-        if (boss != null && boss.GetComponent<BossHealth>().health <= 0)
+        if (boss.GetComponent<BossHealth>().health <= 0)
         {
             BossDefeated();
         }
@@ -77,6 +70,8 @@ public class BossManager : MonoBehaviour
         }
 
         bossBeaten = true;
+        GameObject bar = GameObject.FindGameObjectWithTag("healthBar");
+        if (bar != null) bar.SetActive(false);
         Debug.Log("Boss Defeated");
     }
 
