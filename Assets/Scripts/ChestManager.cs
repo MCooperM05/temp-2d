@@ -41,7 +41,7 @@ public class ChestManager : MonoBehaviour
             lockedText.text = "Needs " + requiredKeyAmount + " keys to unlock.";
         }
 
-        lootedText.text = "Already looted.";
+        lootedText.text = "A Chest requiring a key to open";
         lockedPrompt.SetActive(false);
         lootedPrompt.SetActive(false);
 
