@@ -928,7 +928,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: "Credits:\n\nDesigners:\nJake, Cooper, Zach\n\nDevelopers:\nJake, Cooper,
     Zach\n\nArtists:\nCooper, Zach\n\nSound & Animation:\nCooper\n\nMusic:\n\"Nha\u0323c
-    - Cha\u0323y Nhanh\" by  SieuAmThanh\n\nTesters:\nDr. JJ\nLuke\nEva"
+    - Cha\u0323y Nhanh\" by  SieuAmThanh\n\nTesters:\nDr. JJ\nLuke\nEva\nAiden\nSean\nCarson\nJess"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -955,8 +955,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 42
-  m_fontSizeBase: 42
+  m_fontSize: 36
+  m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18

@@ -15,6 +15,7 @@ public class BossManager : MonoBehaviour
     [SerializeField] public GameObject fishBossPrefab;
     [SerializeField] public PlayerStats playerStats;
     [SerializeField] public TextMeshProUGUI bossDialogue; 
+    [SerializeField] public AudioSource music;
 
     public GameObject[] diveStations;
 
@@ -32,8 +33,9 @@ public class BossManager : MonoBehaviour
     void Start() {
         if (bossBeaten)
         {
+            bossDialogue.enabled = false;
+            music.enabled = false;
             BossDefeated();
-
             if (!keyCollected && keyPrefab != null)
             {
                 Vector3 spot = transform.position;

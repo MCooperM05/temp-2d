@@ -1740,7 +1740,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: I'll Die if I go Down there.
+  m_text: I need to get stronger to go Down there.
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -3010,6 +3010,7 @@ MonoBehaviour:
   fishBossPrefab: {fileID: 8677518938656197869, guid: 6e64057981395274fb35add66b0655a8, type: 3}
   playerStats: {fileID: 1515729163}
   bossDialogue: {fileID: 286572629}
+  music: {fileID: 636484387}
   diveStations:
   - {fileID: 794528577}
   - {fileID: 1158516902}
