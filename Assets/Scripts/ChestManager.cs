@@ -41,7 +41,7 @@ public class ChestManager : MonoBehaviour
             lockedText.text = "Needs " + requiredKeyAmount + " keys to unlock.";
         }
 
-        lootedText.text = "A Chest requiring a key to open";
+        lootedText.text = "It's locked";
         lockedPrompt.SetActive(false);
         lootedPrompt.SetActive(false);
 
@@ -82,7 +82,7 @@ public class ChestManager : MonoBehaviour
 
         if (isOpened)
         {
-            ShowPrompt(lootedPrompt);
+            //ShowPrompt(lootedPrompt);
         } else if (PlayerStats.totalKeys >= requiredKeyAmount){
             gameObject.GetComponent<SpriteRenderer>().sprite = openedChestSprite;
             player.GetComponent<PlayerStats>().UpdateTotalKeys(-requiredKeyAmount);

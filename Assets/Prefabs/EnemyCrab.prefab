@@ -446,7 +446,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7b81a4a533cdffd479b0bd570bb581bd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyHealth
-  health: 10
+  health: 7
   damageMaterial: {fileID: 2100000, guid: bf42df48a74d353478aa08b5378989cf, type: 2}
   defaultMaterial: {fileID: 2100000, guid: cf20dbf0fee94714f9c97d9e3a824b74, type: 2}
   goldAmount: 1

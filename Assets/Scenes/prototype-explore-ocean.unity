@@ -20682,6 +20682,7 @@ MonoBehaviour:
   sceneName: 
   fishBossPrefab: {fileID: 0}
   playerStats: {fileID: 0}
+  bossDialogue: {fileID: 0}
   diveStations: []
   keys: 0
   keyPrefab: {fileID: 0}

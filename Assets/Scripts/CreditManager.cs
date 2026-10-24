@@ -9,7 +9,7 @@ public class CreditManager : MonoBehaviour
     public string sceneToLoad = "MainMenu";
     void Start()
     {
-        StartCoroutine(LeaveCreditsForMenu());
+        //StartCoroutine(LeaveCreditsForMenu());
     }
 
     IEnumerator LeaveCreditsForMenu()

@@ -14,6 +14,8 @@ public class BossManager : MonoBehaviour
     
     [SerializeField] public GameObject fishBossPrefab;
     [SerializeField] public PlayerStats playerStats;
+    [SerializeField] public TextMeshProUGUI bossDialogue; 
+
     public GameObject[] diveStations;
 
     public int keys;
@@ -99,7 +101,7 @@ public class BossManager : MonoBehaviour
         boss.GetComponent<BossHealth>().DisableEnemy();
         boss.GetComponent<SpriteRenderer>().enabled = false;
         yield return new WaitForSeconds(3f);
-        // Text to add "Something is coming. Prepare yourself!"
+        bossDialogue.enabled = false;
         boss.GetComponent<BossHealth>().EnableEnemy();
     }
 

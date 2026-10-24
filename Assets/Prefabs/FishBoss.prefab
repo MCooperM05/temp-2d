@@ -214,10 +214,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c5c7de70c4790c2428854f49f240e702, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
-  moveSpeed: 300
+  moveSpeed: 400
   minChangeTime: 10
   maxChangeTime: 15
-  dashCooldown: 8
+  dashCooldown: 5
 --- !u!114 &1960294188024417715
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -247,7 +247,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b2e7ef0e11de67b4d85e145b1ac04ede, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BossHealth
-  health: 20
+  health: 200
   damageMaterial: {fileID: 2100000, guid: bf42df48a74d353478aa08b5378989cf, type: 2}
   defaultMaterial: {fileID: 2100000, guid: cf20dbf0fee94714f9c97d9e3a824b74, type: 2}
   healthBar: {fileID: 0}
